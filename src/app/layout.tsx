@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,9 +36,14 @@ export default function RootLayout({
           </a>
         </div>
         {children}
+        <Toaster />
         <footer className="absolute bottom-0 left-0 right-0 p-4 text-center">
           Built by{" "}
-          <a href="https://richardkovacs.dev" target="_blank" className="underline">
+          <a
+            href="https://richardkovacs.dev"
+            target="_blank"
+            className="underline"
+          >
             Richard Kovacs
           </a>
         </footer>

@@ -18,12 +18,14 @@ import { CssKey } from "@/components/ui/typography/cssKey";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 
 enum Style {
   Gradient = "Gradient",
 }
 
 export default function Home() {
+  const { toast } = useToast();
   const [text, setText] = useState("Seconds");
   const textAreaRef = useRef<HTMLPreElement>(null);
   const [style, setStyle] = useState<Style>(Style.Gradient);
@@ -50,6 +52,9 @@ export default function Home() {
   const copyToClipboard = async () => {
     const text = textAreaRef.current?.innerText;
     await navigator.clipboard.writeText(text!);
+    toast({
+      description: "Copied to clipboard",
+    });
   };
 
   const changeXMargin = (value: number) => {
@@ -131,7 +136,12 @@ export default function Home() {
           <Card>
             <CardContent className="p-6">
               <div className="relative">
-                <Button variant="outline" size="sm" className="absolute top-2 right-2 z-10" onClick={copyToClipboard}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="absolute top-2 right-2 z-10"
+                  onClick={copyToClipboard}
+                >
                   Copy
                 </Button>
                 <pre
