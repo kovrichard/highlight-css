@@ -53,6 +53,22 @@ export default function Home() {
     });
   };
 
+  const changeXPadding = (value: number) => {
+    setPadding({
+      ...padding,
+      left: value,
+      right: value,
+    });
+  };
+
+  const changeYPadding = (value: number) => {
+    setPadding({
+      ...padding,
+      top: value,
+      bottom: value,
+    });
+  };
+
   return (
     <main className="flex max-w-7xl flex-col items-center p-24 gap-12 m-auto">
       <div className="flex flex-col items-center gap-4">
@@ -205,22 +221,37 @@ export default function Home() {
             </div>
           </div>
           <label className="text-2xl">Padding</label>
-          <div className="flex justify-around gap-4">
-            {["top", "right", "bottom", "left"].map((direction) => (
-              <input
-                key={direction}
-                type="number"
-                step={0.2}
-                value={padding[direction]}
-                onChange={(e) =>
-                  setPadding({
-                    ...padding,
-                    [direction]: parseFloat(e.target.value),
-                  })
-                }
-                className="w-16 p-2 text-slate-900"
+          <div className="flex w-full flex-col justify-around gap-2">
+            <div className="flex gap-2">
+              <Image
+                src="/arrows-move-vertical.svg"
+                width={24}
+                height={24}
+                alt="Arrows up and down"
               />
-            ))}
+              <Slider
+                value={[padding.top]}
+                min={0}
+                max={1}
+                onValueChange={(value) => changeYPadding(value[0])}
+                step={0.1}
+              />
+            </div>
+            <div className="flex gap-2">
+              <Image
+                src="/arrows-move-horizontal.svg"
+                width={24}
+                height={24}
+                alt="Arrows left and right"
+              />
+              <Slider
+                value={[padding.left]}
+                min={0}
+                max={1}
+                onValueChange={(value) => changeXPadding(value[0])}
+                step={0.1}
+              />
+            </div>
           </div>
           <label className="text-2xl">Border Radius</label>
           <div className="flex justify-around gap-4">
