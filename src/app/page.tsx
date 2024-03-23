@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { H1 } from "@/components/ui/typography/h1";
+import { H2 } from "@/components/ui/typography/h2";
 
 enum Style {
   Gradient = "Gradient",
@@ -81,8 +83,8 @@ export default function Home() {
   return (
     <main className="flex max-w-7xl flex-col items-center p-24 gap-12 m-auto">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="text-5xl font-bold">Text Highlighter</h1>
-        <h2 className="text-2xl">Generate highlighter effect CSS code</h2>
+        <H1>Text Highlighter</H1>
+        <H2>Generate highlighter effect CSS code</H2>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-around w-full">
         <div className="flex flex-col items-center gap-14">
