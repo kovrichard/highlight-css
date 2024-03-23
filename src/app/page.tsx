@@ -3,7 +3,14 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Slider } from "@/components/ui/slider";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 
 enum Style {
   Gradient = "Gradient",
@@ -173,19 +180,18 @@ export default function Home() {
           <div className="flex flex-col items-center p-8 rounded-3xl">
             <label className="text-2xl">Background Color</label>
             <div className="flex items-center gap-2">
-              <input
+              <Input
                 type="color"
-                className="w-8 h-8 p-0 border-4 border-slate-900"
-                style={{ WebkitAppearance: "none" }}
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
+                className="w-10 h-10 p-1"
               />
               <span>or</span>
-              <input
+              <Input
                 type="text"
-                className="w-24 p-2 text-slate-900"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
+                className="w-24"
               />
             </div>
           </div>
