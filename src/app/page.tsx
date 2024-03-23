@@ -87,33 +87,33 @@ export default function Home() {
               </button>
               <code className="flex flex-col">
                 <div>
-                  <span className="text-[#66d9ef]">margin:</span>{" "}
+                  <span className="text-[#66d9ef]">margin</span>
                   <span className="text-white">
-                    {margin.top}em {margin.right}em {margin.bottom}em{" "}
+                    : {margin.top}em {margin.right}em {margin.bottom}em{" "}
                     {margin.left}em;
                   </span>
                 </div>
                 <div>
-                  <span className="text-[#66d9ef]">padding:</span>{" "}
+                  <span className="text-[#66d9ef]">padding</span>
                   <span className="text-white">
-                    {padding.top}em {padding.right}em {padding.bottom}em{" "}
+                    : {padding.top}em {padding.right}em {padding.bottom}em{" "}
                     {padding.left}em;
                   </span>
                 </div>
                 <div>
-                  <span className="text-[#66d9ef]">border-radius:</span>{" "}
+                  <span className="text-[#66d9ef]">border-radius</span>
                   <span className="text-white">
-                    {borderRadius.topLeft}em {borderRadius.topRight}
+                    : {borderRadius.topLeft}em {borderRadius.topRight}
                     em {borderRadius.bottomLeft}em {borderRadius.bottomRight}em;
                   </span>
                 </div>
                 <div>
-                  <span className="text-[#66d9ef]">background:</span>{" "}
-                  <span className="text-white">transparent;</span>
+                  <span className="text-[#66d9ef]">background</span>
+                  <span className="text-white">: transparent;</span>
                 </div>
                 <div>
-                  <span className="text-[#66d9ef]">background-image:</span>{" "}
-                  <span className="text-white">linear-gradient(</span>
+                  <span className="text-[#66d9ef]">background-image</span>
+                  <span className="text-white">: linear-gradient(</span>
                 </div>
                 <span className="text-white">{"  "}to right,</span>
                 <span className="text-white">{`  ${color}1a,`}</span>
