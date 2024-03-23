@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 gap-8">
+    <main className="flex min-h-screen max-w-7xl flex-col items-center p-24 gap-8 m-auto">
       <h1 className="text-4xl">Mark Highlighter</h1>
       <h2 className="text-2xl">Generate highlighter effect CSS code</h2>
       <div className="flex flex-col sm:flex-row items-center justify-around w-full">
@@ -58,8 +58,7 @@ export default function Home() {
                 borderBottomLeftRadius: `${borderRadius.bottomLeft}em`,
                 borderBottomRightRadius: `${borderRadius.bottomRight}em`,
                 background: "transparent",
-                backgroundImage:
-                  `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+                backgroundImage: `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
                 WebkitBoxDecorationBreak: "clone",
                 boxDecorationBreak: "clone",
                 color: "white",
@@ -77,6 +76,52 @@ export default function Home() {
             className="w-64 p-2"
             style={{ color: "black" }}
           />
+          <div className="p-8 bg-slate-500 rounded-2xl">
+            <pre ref={textAreaRef} className="relative bg-black p-8 rounded-lg">
+              <button
+                className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2"
+                onClick={copyToClipboard}
+              >
+                Copy
+              </button>
+              <code className="flex flex-col">
+                <div>
+                  <span className="text-[#66d9ef]">margin:</span>{" "}
+                  <span>
+                    {margin.top}em {margin.right}em {margin.bottom}em{" "}
+                    {margin.left}em;
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[#66d9ef]">padding:</span>{" "}
+                  <span>
+                    {padding.top}em {padding.right}em {padding.bottom}em{" "}
+                    {padding.left}em;
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[#66d9ef]">border-radius:</span>{" "}
+                  <span>
+                    {borderRadius.topLeft}em {borderRadius.topRight}
+                    em {borderRadius.bottomLeft}em {borderRadius.bottomRight}em;
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[#66d9ef]">background:</span>{" "}
+                  <span>transparent;</span>
+                </div>
+                <div>
+                  <span className="text-[#66d9ef]">background-image:</span>{" "}
+                  <span>linear-gradient(</span>
+                </div>
+                <span>{"  "}to right,</span>
+                <span>{`  ${color}1a,`}</span>
+                <span>{`  ${color}ae 4%,`}</span>
+                <span>{`  ${color}4d`}</span>
+                <span>);</span>
+              </code>
+            </pre>
+          </div>
         </div>
         <div className="flex flex-col items-center p-8 bg-slate-500 rounded-3xl">
           <h2 className="text-2xl">Settings</h2>
@@ -163,52 +208,6 @@ export default function Home() {
                 />
               )
             )}
-          </div>
-          <div className="relative">
-            <button
-              className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2"
-              onClick={copyToClipboard}
-            >
-              Copy
-            </button>
-            <pre ref={textAreaRef} className="bg-black p-8 rounded-lg">
-              <code className="flex flex-col">
-                <div>
-                  <span className="text-[#66d9ef]">margin:</span>{" "}
-                  <span>
-                    {margin.top}em {margin.right}em {margin.bottom}em{" "}
-                    {margin.left}em;
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">padding:</span>{" "}
-                  <span>
-                    {padding.top}em {padding.right}em {padding.bottom}em{" "}
-                    {padding.left}em;
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">border-radius:</span>{" "}
-                  <span>
-                    {borderRadius.topLeft}em {borderRadius.topRight}
-                    em {borderRadius.bottomLeft}em {borderRadius.bottomRight}em;
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">background:</span>{" "}
-                  <span>transparent;</span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">background-image:</span>{" "}
-                  <span>linear-gradient(</span>
-                </div>
-                <span>{"  "}to right,</span>
-                <span>{`  ${color}1a,`}</span>
-                <span>{`  ${color}ae 4%,`}</span>
-                <span>{`  ${color}4d`}</span>
-                <span>);</span>
-              </code>
-            </pre>
           </div>
         </div>
       </div>
