@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
+import { Slider } from "@/components/ui/slider";
 
 enum Style {
   Gradient,
@@ -33,6 +35,22 @@ export default function Home() {
   const copyToClipboard = async () => {
     const text = textAreaRef.current?.innerText;
     await navigator.clipboard.writeText(text!);
+  };
+
+  const changeXMargin = (value: number) => {
+    setMargin({
+      ...margin,
+      left: value,
+      right: value,
+    });
+  };
+
+  const changeYMargin = (value: number) => {
+    setMargin({
+      ...margin,
+      top: value,
+      bottom: value,
+    });
   };
 
   return (
@@ -148,29 +166,43 @@ export default function Home() {
               <input
                 type="text"
                 className="w-24 p-2 text-slate-900"
-                placeholder="#000000"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
               />
             </div>
           </div>
           <label className="text-2xl">Margin</label>
-          <div className="flex justify-around gap-4">
-            {["top", "right", "bottom", "left"].map((direction) => (
-              <input
-                key={direction}
-                type="number"
-                step={0.2}
-                value={margin[direction]}
-                onChange={(e) =>
-                  setMargin({
-                    ...margin,
-                    [direction]: parseFloat(e.target.value),
-                  })
-                }
-                className="w-16 p-2 text-slate-900"
+          <div className="flex w-full flex-col justify-around gap-2">
+            <div className="flex gap-2">
+              <Image
+                src="/arrows-move-vertical.svg"
+                width={24}
+                height={24}
+                alt="Arrows up and down"
               />
-            ))}
+              <Slider
+                value={[margin.top]}
+                min={-0.6}
+                max={1}
+                onValueChange={(value) => changeYMargin(value[0])}
+                step={0.1}
+              />
+            </div>
+            <div className="flex gap-2">
+              <Image
+                src="/arrows-move-horizontal.svg"
+                width={24}
+                height={24}
+                alt="Arrows left and right"
+              />
+              <Slider
+                value={[margin.left]}
+                min={-0.6}
+                max={1}
+                onValueChange={(value) => changeXMargin(value[0])}
+                step={0.1}
+              />
+            </div>
           </div>
           <label className="text-2xl">Padding</label>
           <div className="flex justify-around gap-4">
