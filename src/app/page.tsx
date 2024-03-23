@@ -88,33 +88,35 @@ export default function Home() {
         <H2>Generate highlighter effect CSS code</H2>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-around w-full">
-        <div className="flex flex-col items-center gap-14">
-          <p>
-            <span className="text-4xl">Highlight Text in</span>{" "}
-            <mark
-              style={{
-                marginTop: `${margin.top}em`,
-                marginRight: `${margin.right}em`,
-                marginBottom: `${margin.bottom}em`,
-                marginLeft: `${margin.left}em`,
-                paddingTop: `${padding.top}em`,
-                paddingRight: `${padding.right}em`,
-                paddingBottom: `${padding.bottom}em`,
-                paddingLeft: `${padding.left}em`,
-                borderTopLeftRadius: `${borderRadius.topLeft}em`,
-                borderTopRightRadius: `${borderRadius.topRight}em`,
-                borderBottomLeftRadius: `${borderRadius.bottomLeft}em`,
-                borderBottomRightRadius: `${borderRadius.bottomRight}em`,
-                background: "transparent",
-                backgroundImage: `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
-                WebkitBoxDecorationBreak: "clone",
-                boxDecorationBreak: "clone",
-              }}
-              className="text-4xl"
-            >
-              seconds
-            </mark>{" "}
-            <span className="text-4xl">here</span>
+        <div className="flex flex-col items-center gap-14 w-[30rem]">
+          <p className="text-5xl text-center">
+            <span>Highlight Your Text</span>{" "}
+            <span>
+              in{" "}
+              <mark
+                style={{
+                  marginTop: `${margin.top}em`,
+                  marginRight: `${margin.right}em`,
+                  marginBottom: `${margin.bottom}em`,
+                  marginLeft: `${margin.left}em`,
+                  paddingTop: `${padding.top}em`,
+                  paddingRight: `${padding.right}em`,
+                  paddingBottom: `${padding.bottom}em`,
+                  paddingLeft: `${padding.left}em`,
+                  borderTopLeftRadius: `${borderRadius.topLeft}em`,
+                  borderTopRightRadius: `${borderRadius.topRight}em`,
+                  borderBottomLeftRadius: `${borderRadius.bottomLeft}em`,
+                  borderBottomRightRadius: `${borderRadius.bottomRight}em`,
+                  background: "transparent",
+                  backgroundImage: `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+                  WebkitBoxDecorationBreak: "clone",
+                  boxDecorationBreak: "clone",
+                }}
+              >
+                Seconds
+              </mark>{" "}
+              Here
+            </span>
           </p>
           {/*<input
             type="text"
