@@ -11,6 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 enum Style {
   Gradient = "Gradient",
@@ -166,20 +167,22 @@ export default function Home() {
             </pre>
           </div>
         </div>
-        <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg">
+        <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg gap-6">
           <h2 className="text-2xl">Settings</h2>
-          <label className="text-2xl">Style</label>
-          <Select defaultValue={Style.Gradient}>
-            <SelectTrigger>
-              <SelectValue placeholder="Style"></SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value={Style.Gradient}>Gradient</SelectItem>
-            </SelectContent>
-          </Select>
-          <div className="flex flex-col items-center p-8 rounded-3xl">
-            <label className="text-2xl">Background Color</label>
-            <div className="flex items-center gap-2">
+          <div className="flex flex-1 items-center w-full gap-4">
+            <Label className="w-20">Style</Label>
+            <Select defaultValue={Style.Gradient}>
+              <SelectTrigger>
+                <SelectValue placeholder="Style"></SelectValue>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value={Style.Gradient}>Gradient</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex flex-1 items-center w-full gap-4">
+            <Label className="w-20">Color</Label>
+            <div className="flex items-center w-full justify-around">
               <Input
                 type="color"
                 value={color}
@@ -195,70 +198,74 @@ export default function Home() {
               />
             </div>
           </div>
-          <label className="text-2xl">Margin</label>
-          <div className="flex w-full flex-col justify-around gap-2">
-            <div className="flex gap-2">
-              <Image
-                src="/arrows-move-vertical.svg"
-                width={24}
-                height={24}
-                alt="Arrows up and down"
-              />
-              <Slider
-                value={[margin.top]}
-                min={-0.6}
-                max={1}
-                onValueChange={(value) => changeYMargin(value[0])}
-                step={0.1}
-              />
-            </div>
-            <div className="flex gap-2">
-              <Image
-                src="/arrows-move-horizontal.svg"
-                width={24}
-                height={24}
-                alt="Arrows left and right"
-              />
-              <Slider
-                value={[margin.left]}
-                min={-0.6}
-                max={1}
-                onValueChange={(value) => changeXMargin(value[0])}
-                step={0.1}
-              />
+          <div className="flex w-full items-center gap-4">
+            <Label className="w-20">Margin</Label>
+            <div className="flex w-full flex-col justify-around gap-2">
+              <div className="flex gap-2">
+                <Image
+                  src="/arrows-move-vertical.svg"
+                  width={24}
+                  height={24}
+                  alt="Arrows up and down"
+                />
+                <Slider
+                  value={[margin.top]}
+                  min={-0.6}
+                  max={1}
+                  onValueChange={(value) => changeYMargin(value[0])}
+                  step={0.1}
+                />
+              </div>
+              <div className="flex gap-2">
+                <Image
+                  src="/arrows-move-horizontal.svg"
+                  width={24}
+                  height={24}
+                  alt="Arrows left and right"
+                />
+                <Slider
+                  value={[margin.left]}
+                  min={-0.6}
+                  max={1}
+                  onValueChange={(value) => changeXMargin(value[0])}
+                  step={0.1}
+                />
+              </div>
             </div>
           </div>
-          <label className="text-2xl">Padding</label>
-          <div className="flex w-full flex-col justify-around gap-2">
-            <div className="flex gap-2">
-              <Image
-                src="/arrows-move-vertical.svg"
-                width={24}
-                height={24}
-                alt="Arrows up and down"
-              />
-              <Slider
-                value={[padding.top]}
-                min={0}
-                max={1}
-                onValueChange={(value) => changeYPadding(value[0])}
-                step={0.1}
-              />
-            </div>
-            <div className="flex gap-2">
-              <Image
-                src="/arrows-move-horizontal.svg"
-                width={24}
-                height={24}
-                alt="Arrows left and right"
-              />
-              <Slider
-                value={[padding.left]}
-                min={0}
-                max={1}
-                onValueChange={(value) => changeXPadding(value[0])}
-                step={0.1}
-              />
+          <div className="flex w-full items-center gap-4">
+            <Label className="w-20">Padding</Label>
+            <div className="flex w-full flex-col justify-around gap-2">
+              <div className="flex gap-2">
+                <Image
+                  src="/arrows-move-vertical.svg"
+                  width={24}
+                  height={24}
+                  alt="Arrows up and down"
+                />
+                <Slider
+                  value={[padding.top]}
+                  min={0}
+                  max={1}
+                  onValueChange={(value) => changeYPadding(value[0])}
+                  step={0.1}
+                />
+              </div>
+              <div className="flex gap-2">
+                <Image
+                  src="/arrows-move-horizontal.svg"
+                  width={24}
+                  height={24}
+                  alt="Arrows left and right"
+                />
+                <Slider
+                  value={[padding.left]}
+                  min={0}
+                  max={1}
+                  onValueChange={(value) => changeXPadding(value[0])}
+                  step={0.1}
+                />
+              </div>
             </div>
           </div>
           <label className="text-2xl">Border Radius</label>
