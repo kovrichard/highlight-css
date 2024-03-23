@@ -10,6 +10,7 @@ export default function Home() {
   const [text, setText] = useState("Hello World!");
   const textAreaRef = useRef<HTMLPreElement>(null);
   const [style, setStyle] = useState<Style>(Style.Gradient);
+  const [color, setColor] = useState<string>("#ffe100");
   const [margin, setMargin] = useState<{ [key: string]: number }>({
     top: 0,
     right: -0.4,
@@ -58,9 +59,10 @@ export default function Home() {
                 borderBottomRightRadius: `${borderRadius.bottomRight}em`,
                 background: "transparent",
                 backgroundImage:
-                  "linear-gradient(to right, rgba(255, 225, 0, 0.1), rgba(255, 225, 0, 0.7) 4%, rgba(255, 225, 0, 0.3))",
+                  `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
                 WebkitBoxDecorationBreak: "clone",
                 boxDecorationBreak: "clone",
+                color: "white",
               }}
               className="text-3xl"
             >
@@ -86,6 +88,26 @@ export default function Home() {
           >
             <option value={Style.Gradient}>Gradient</option>
           </select>
+          <div className="flex flex-col items-center p-8 bg-slate-500 rounded-3xl">
+            <label className="text-2xl">Background Color</label>
+            <div className="flex items-center gap-2">
+              <input
+                type="color"
+                className="w-8 h-8 p-0 border-4 border-slate-900"
+                style={{ WebkitAppearance: "none" }}
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+              <span>or</span>
+              <input
+                type="text"
+                className="w-24 p-2 text-slate-900"
+                placeholder="#000000"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+            </div>
+          </div>
           <label className="text-2xl">Margin</label>
           <div className="flex justify-around gap-4">
             {["top", "right", "bottom", "left"].map((direction) => (
@@ -181,9 +203,9 @@ export default function Home() {
                   <span>linear-gradient(</span>
                 </div>
                 <span>{"  "}to right,</span>
-                <span>{"  "}rgba(255, 225, 0, 0.1),</span>
-                <span>{"  "}rgba(255, 225, 0, 0.7) 4%,</span>
-                <span>{"  "}rgba(255, 225, 0, 0.3)</span>
+                <span>{`  ${color}1a,`}</span>
+                <span>{`  ${color}ae 4%,`}</span>
+                <span>{`  ${color}4d`}</span>
                 <span>);</span>
               </code>
             </pre>
