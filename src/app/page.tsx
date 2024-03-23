@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { H1 } from "@/components/ui/typography/h1";
 import { H2 } from "@/components/ui/typography/h2";
 import { CssKey } from "@/components/ui/typography/cssKey";
+import { Separator } from "@/components/ui/separator";
 
 enum Style {
   Gradient = "Gradient",
@@ -178,7 +179,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg gap-6">
+        <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg gap-4">
           <h2 className="text-2xl">Settings</h2>
           <div className="flex flex-1 items-center w-full gap-4">
             <Label className="w-20">Style</Label>
@@ -191,6 +192,7 @@ export default function Home() {
               </SelectContent>
             </Select>
           </div>
+          <Separator />
           <div className="flex flex-1 items-center w-full gap-4">
             <Label className="w-20">Color</Label>
             <div className="flex items-center w-full justify-around">
@@ -209,6 +211,7 @@ export default function Home() {
               />
             </div>
           </div>
+          <Separator />
           <div className="flex w-full items-center gap-4">
             <Label className="w-20">Margin</Label>
             <div className="flex w-full flex-col justify-around gap-2">
@@ -244,6 +247,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <Separator />
           <div className="flex w-full items-center gap-4">
             <Label className="w-20">Padding</Label>
             <div className="flex w-full flex-col justify-around gap-2">
@@ -279,25 +283,28 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <label className="text-2xl">Border Radius</label>
-          <div className="flex justify-around gap-4">
-            {["topLeft", "topRight", "bottomLeft", "bottomRight"].map(
-              (direction) => (
-                <input
-                  key={direction}
-                  type="number"
-                  step={0.2}
-                  value={borderRadius[direction]}
-                  onChange={(e) =>
-                    setBorderRadius({
-                      ...borderRadius,
-                      [direction]: parseFloat(e.target.value),
-                    })
-                  }
-                  className="w-16 p-2 text-slate-900"
-                />
-              )
-            )}
+          <Separator />
+          <div className="flex w-full items-center gap-4">
+            <Label className="w-20">Border Radius</Label>
+            <div className="flex justify-around gap-4">
+              {["topLeft", "topRight", "bottomLeft", "bottomRight"].map(
+                (direction) => (
+                  <Input
+                    key={direction}
+                    type="number"
+                    step={0.2}
+                    value={borderRadius[direction]}
+                    onChange={(e) =>
+                      setBorderRadius({
+                        ...borderRadius,
+                        [direction]: parseFloat(e.target.value),
+                      })
+                    }
+                    className="w-16 p-2 text-slate-900"
+                  />
+                )
+              )}
+            </div>
           </div>
         </div>
       </div>
