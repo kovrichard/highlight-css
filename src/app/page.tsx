@@ -7,7 +7,7 @@ enum Style {
 }
 
 export default function Home() {
-  const [text, setText] = useState("Hello World!");
+  const [text, setText] = useState("Seconds");
   const textAreaRef = useRef<HTMLPreElement>(null);
   const [style, setStyle] = useState<Style>(Style.Gradient);
   const [color, setColor] = useState<string>("#ffe100");
@@ -36,13 +36,15 @@ export default function Home() {
   };
 
   return (
-    <main className="flex max-w-7xl flex-col items-center p-24 gap-8 m-auto">
-      <h1 className="text-4xl">Mark Highlighter</h1>
-      <h2 className="text-2xl">Generate highlighter effect CSS code</h2>
-      <div className="flex flex-col sm:flex-row items-center justify-around w-full">
-        <div className="flex flex-col items-center gap-8">
+    <main className="flex max-w-7xl flex-col items-center p-24 gap-12 m-auto">
+      <div className="flex flex-col items-center gap-4">
+        <h1 className="text-5xl font-bold">Text Highlighter</h1>
+        <h2 className="text-2xl">Generate highlighter effect CSS code</h2>
+      </div>
+      <div className="flex flex-col md:flex-row items-center justify-around w-full">
+        <div className="flex flex-col items-center gap-14">
           <p>
-            <span className="text-3xl">Before</span>{" "}
+            <span className="text-4xl">Highlight Text in</span>{" "}
             <mark
               style={{
                 marginTop: `${margin.top}em`,
@@ -62,20 +64,20 @@ export default function Home() {
                 WebkitBoxDecorationBreak: "clone",
                 boxDecorationBreak: "clone",
               }}
-              className="text-3xl"
+              className="text-4xl"
             >
-              {text}
+              seconds
             </mark>{" "}
-            <span className="text-3xl">after</span>
+            <span className="text-4xl">here</span>
           </p>
-          <input
+          {/*<input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="w-64 p-2"
             style={{ color: "black" }}
-          />
-          <div className="p-8 bg-slate-500 rounded-2xl">
+          />*/}
+          <div className="p-8 bg-card rounded-3xl shadow-lg">
             <pre ref={textAreaRef} className="relative bg-black p-8 rounded-lg">
               <button
                 className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2"
@@ -122,7 +124,7 @@ export default function Home() {
             </pre>
           </div>
         </div>
-        <div className="flex flex-col items-center p-8 bg-slate-500 rounded-3xl">
+        <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg">
           <h2 className="text-2xl">Settings</h2>
           <label className="text-2xl">Style</label>
           <select
@@ -132,7 +134,7 @@ export default function Home() {
           >
             <option value={Style.Gradient}>Gradient</option>
           </select>
-          <div className="flex flex-col items-center p-8 bg-slate-500 rounded-3xl">
+          <div className="flex flex-col items-center p-8 rounded-3xl">
             <label className="text-2xl">Background Color</label>
             <div className="flex items-center gap-2">
               <input

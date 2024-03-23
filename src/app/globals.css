@@ -20,12 +20,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  background-color: rgb(var(--background-start-rgb));
+  /*background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb));*/
 }
 
 @layer utilities {
@@ -35,8 +36,8 @@ body {
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
-	padding: 0;
+  padding: 0;
 }
 input[type="color"]::-webkit-color-swatch {
-	border: none;
+  border: none;
 }
