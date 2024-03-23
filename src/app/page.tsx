@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { H1 } from "@/components/ui/typography/h1";
 import { H2 } from "@/components/ui/typography/h2";
+import { CssKey } from "@/components/ui/typography/cssKey";
 
 enum Style {
   Gradient = "Gradient",
@@ -123,50 +124,56 @@ export default function Home() {
             style={{ color: "black" }}
           />*/}
           <div className="p-8 bg-card rounded-3xl shadow-lg">
-            <pre ref={textAreaRef} className="relative bg-black p-8 rounded-lg">
+            <div className="relative">
               <button
-                className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2"
+                className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2 z-10"
                 onClick={copyToClipboard}
               >
                 Copy
               </button>
-              <code className="flex flex-col">
-                <div>
-                  <span className="text-[#66d9ef]">margin</span>
-                  <span className="text-white">
-                    : {margin.top}em {margin.right}em {margin.bottom}em{" "}
-                    {margin.left}em;
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">padding</span>
-                  <span className="text-white">
-                    : {padding.top}em {padding.right}em {padding.bottom}em{" "}
-                    {padding.left}em;
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">border-radius</span>
-                  <span className="text-white">
-                    : {borderRadius.topLeft}em {borderRadius.topRight}
-                    em {borderRadius.bottomLeft}em {borderRadius.bottomRight}em;
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">background</span>
-                  <span className="text-white">: transparent;</span>
-                </div>
-                <div>
-                  <span className="text-[#66d9ef]">background-image</span>
-                  <span className="text-white">: linear-gradient(</span>
-                </div>
-                <span className="text-white">{"  "}to right,</span>
-                <span className="text-white">{`  ${color}1a,`}</span>
-                <span className="text-white">{`  ${color}ae 4%,`}</span>
-                <span className="text-white">{`  ${color}4d`}</span>
-                <span className="text-white">);</span>
-              </code>
-            </pre>
+              <pre
+                ref={textAreaRef}
+                className="relative bg-black p-8 rounded-lg"
+              >
+                <code className="flex flex-col">
+                  <div>
+                    <CssKey>margin</CssKey>
+                    <span className="text-white">
+                      {margin.top}em {margin.right}em {margin.bottom}em{" "}
+                      {margin.left}em;
+                    </span>
+                  </div>
+                  <div>
+                    <CssKey>padding</CssKey>
+                    <span className="text-white">
+                      {padding.top}em {padding.right}em {padding.bottom}em{" "}
+                      {padding.left}em;
+                    </span>
+                  </div>
+                  <div>
+                    <CssKey>border-radius</CssKey>
+                    <span className="text-white">
+                      {borderRadius.topLeft}em {borderRadius.topRight}
+                      em {borderRadius.bottomLeft}em {borderRadius.bottomRight}
+                      em;
+                    </span>
+                  </div>
+                  <div>
+                    <CssKey>background</CssKey>
+                    <span className="text-white">transparent;</span>
+                  </div>
+                  <div>
+                    <CssKey>background-image</CssKey>
+                    <span className="text-white">linear-gradient(</span>
+                  </div>
+                  <span className="text-white">{"  "}to right,</span>
+                  <span className="text-white">{`  ${color}1a,`}</span>
+                  <span className="text-white">{`  ${color}ae 4%,`}</span>
+                  <span className="text-white">{`  ${color}4d`}</span>
+                  <span className="text-white">);</span>
+                </code>
+              </pre>
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg gap-6">
