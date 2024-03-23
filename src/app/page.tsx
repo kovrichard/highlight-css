@@ -17,6 +17,7 @@ import { H2 } from "@/components/ui/typography/h2";
 import { CssKey } from "@/components/ui/typography/cssKey";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 enum Style {
   Gradient = "Gradient",
@@ -130,12 +131,9 @@ export default function Home() {
           <Card>
             <CardContent className="p-6">
               <div className="relative">
-                <button
-                  className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2 z-10"
-                  onClick={copyToClipboard}
-                >
+                <Button variant="outline" size="sm" className="absolute top-2 right-2 z-10" onClick={copyToClipboard}>
                   Copy
-                </button>
+                </Button>
                 <pre
                   ref={textAreaRef}
                   className="relative bg-black p-8 rounded-lg"
