@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen max-w-7xl flex-col items-center p-24 gap-8 m-auto">
+    <main className="flex max-w-7xl flex-col items-center p-24 gap-8 m-auto">
       <h1 className="text-4xl">Mark Highlighter</h1>
       <h2 className="text-2xl">Generate highlighter effect CSS code</h2>
       <div className="flex flex-col sm:flex-row items-center justify-around w-full">
@@ -61,7 +61,6 @@ export default function Home() {
                 backgroundImage: `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
                 WebkitBoxDecorationBreak: "clone",
                 boxDecorationBreak: "clone",
-                color: "white",
               }}
               className="text-3xl"
             >
@@ -87,38 +86,38 @@ export default function Home() {
               <code className="flex flex-col">
                 <div>
                   <span className="text-[#66d9ef]">margin:</span>{" "}
-                  <span>
+                  <span className="text-white">
                     {margin.top}em {margin.right}em {margin.bottom}em{" "}
                     {margin.left}em;
                   </span>
                 </div>
                 <div>
                   <span className="text-[#66d9ef]">padding:</span>{" "}
-                  <span>
+                  <span className="text-white">
                     {padding.top}em {padding.right}em {padding.bottom}em{" "}
                     {padding.left}em;
                   </span>
                 </div>
                 <div>
                   <span className="text-[#66d9ef]">border-radius:</span>{" "}
-                  <span>
+                  <span className="text-white">
                     {borderRadius.topLeft}em {borderRadius.topRight}
                     em {borderRadius.bottomLeft}em {borderRadius.bottomRight}em;
                   </span>
                 </div>
                 <div>
                   <span className="text-[#66d9ef]">background:</span>{" "}
-                  <span>transparent;</span>
+                  <span className="text-white">transparent;</span>
                 </div>
                 <div>
                   <span className="text-[#66d9ef]">background-image:</span>{" "}
-                  <span>linear-gradient(</span>
+                  <span className="text-white">linear-gradient(</span>
                 </div>
-                <span>{"  "}to right,</span>
-                <span>{`  ${color}1a,`}</span>
-                <span>{`  ${color}ae 4%,`}</span>
-                <span>{`  ${color}4d`}</span>
-                <span>);</span>
+                <span className="text-white">{"  "}to right,</span>
+                <span className="text-white">{`  ${color}1a,`}</span>
+                <span className="text-white">{`  ${color}ae 4%,`}</span>
+                <span className="text-white">{`  ${color}4d`}</span>
+                <span className="text-white">);</span>
               </code>
             </pre>
           </div>

@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`relative ${inter.className}`}>
+      <body className={`relative min-h-screen ${inter.className}`}>
         <div className="absolute flex items-center top-4 right-4 gap-4">
           <Image
             src="/richard-kovacs.webp"
@@ -28,12 +28,19 @@ export default function RootLayout({
           />
           <a
             href="https://twitter.com/rchardkovacs"
+            target="_blank"
             className="text-lg font-semibold text-[#1da1f2]"
           >
             Follow Me on X
           </a>
         </div>
         {children}
+        <footer className="absolute bottom-0 left-0 right-0 p-4 text-center">
+          Built by{" "}
+          <a href="https://richardkovacs.dev" target="_blank" className="underline">
+            Richard Kovacs
+          </a>
+        </footer>
       </body>
     </html>
   );
