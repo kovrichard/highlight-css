@@ -40,30 +40,34 @@ export default function Home() {
       <h2 className="text-2xl">Generate highlighter effect CSS code</h2>
       <div className="flex flex-col sm:flex-row items-center justify-around w-full">
         <div className="flex flex-col items-center gap-8">
-          <mark
-            style={{
-              marginTop: `${margin.top}em`,
-              marginRight: `${margin.right}em`,
-              marginBottom: `${margin.bottom}em`,
-              marginLeft: `${margin.left}em`,
-              paddingTop: `${padding.top}em`,
-              paddingRight: `${padding.right}em`,
-              paddingBottom: `${padding.bottom}em`,
-              paddingLeft: `${padding.left}em`,
-              borderTopLeftRadius: `${borderRadius.topLeft}em`,
-              borderTopRightRadius: `${borderRadius.topRight}em`,
-              borderBottomLeftRadius: `${borderRadius.bottomLeft}em`,
-              borderBottomRightRadius: `${borderRadius.bottomRight}em`,
-              background: "transparent",
-              backgroundImage:
-                "linear-gradient(to right, rgba(255, 225, 0, 0.1), rgba(255, 225, 0, 0.7) 4%, rgba(255, 225, 0, 0.3))",
-              WebkitBoxDecorationBreak: "clone",
-              boxDecorationBreak: "clone",
-            }}
-            className="text-4xl"
-          >
-            {text}
-          </mark>
+          <p>
+            <span className="text-3xl">Before</span>{" "}
+            <mark
+              style={{
+                marginTop: `${margin.top}em`,
+                marginRight: `${margin.right}em`,
+                marginBottom: `${margin.bottom}em`,
+                marginLeft: `${margin.left}em`,
+                paddingTop: `${padding.top}em`,
+                paddingRight: `${padding.right}em`,
+                paddingBottom: `${padding.bottom}em`,
+                paddingLeft: `${padding.left}em`,
+                borderTopLeftRadius: `${borderRadius.topLeft}em`,
+                borderTopRightRadius: `${borderRadius.topRight}em`,
+                borderBottomLeftRadius: `${borderRadius.bottomLeft}em`,
+                borderBottomRightRadius: `${borderRadius.bottomRight}em`,
+                background: "transparent",
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255, 225, 0, 0.1), rgba(255, 225, 0, 0.7) 4%, rgba(255, 225, 0, 0.3))",
+                WebkitBoxDecorationBreak: "clone",
+                boxDecorationBreak: "clone",
+              }}
+              className="text-3xl"
+            >
+              {text}
+            </mark>{" "}
+            <span className="text-3xl">after</span>
+          </p>
           <input
             type="text"
             value={text}
@@ -88,6 +92,7 @@ export default function Home() {
               <input
                 key={direction}
                 type="number"
+                step={0.2}
                 value={margin[direction]}
                 onChange={(e) =>
                   setMargin({
@@ -105,6 +110,7 @@ export default function Home() {
               <input
                 key={direction}
                 type="number"
+                step={0.2}
                 value={padding[direction]}
                 onChange={(e) =>
                   setPadding({
@@ -123,6 +129,7 @@ export default function Home() {
                 <input
                   key={direction}
                   type="number"
+                  step={0.2}
                   value={borderRadius[direction]}
                   onChange={(e) =>
                     setBorderRadius({
