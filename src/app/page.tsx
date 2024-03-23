@@ -16,6 +16,7 @@ import { H1 } from "@/components/ui/typography/h1";
 import { H2 } from "@/components/ui/typography/h2";
 import { CssKey } from "@/components/ui/typography/cssKey";
 import { Separator } from "@/components/ui/separator";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 enum Style {
   Gradient = "Gradient",
@@ -126,187 +127,194 @@ export default function Home() {
             className="w-64 p-2"
             style={{ color: "black" }}
           />*/}
-          <div className="p-8 bg-card rounded-3xl shadow-lg">
-            <div className="relative">
-              <button
-                className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2 z-10"
-                onClick={copyToClipboard}
-              >
-                Copy
-              </button>
-              <pre
-                ref={textAreaRef}
-                className="relative bg-black p-8 rounded-lg"
-              >
-                <code className="flex flex-col">
-                  <div>
-                    <CssKey>margin</CssKey>
-                    <span className="text-white">
-                      {margin.top}em {margin.right}em {margin.bottom}em{" "}
-                      {margin.left}em;
-                    </span>
-                  </div>
-                  <div>
-                    <CssKey>padding</CssKey>
-                    <span className="text-white">
-                      {padding.top}em {padding.right}em {padding.bottom}em{" "}
-                      {padding.left}em;
-                    </span>
-                  </div>
-                  <div>
-                    <CssKey>border-radius</CssKey>
-                    <span className="text-white">
-                      {borderRadius.topLeft}em {borderRadius.topRight}
-                      em {borderRadius.bottomLeft}em {borderRadius.bottomRight}
-                      em;
-                    </span>
-                  </div>
-                  <div>
-                    <CssKey>background</CssKey>
-                    <span className="text-white">transparent;</span>
-                  </div>
-                  <div>
-                    <CssKey>background-image</CssKey>
-                    <span className="text-white">linear-gradient(</span>
-                  </div>
-                  <span className="text-white">{"  "}to right,</span>
-                  <span className="text-white">{`  ${color}1a,`}</span>
-                  <span className="text-white">{`  ${color}ae 4%,`}</span>
-                  <span className="text-white">{`  ${color}4d`}</span>
-                  <span className="text-white">);</span>
-                </code>
-              </pre>
-            </div>
-          </div>
+          <Card>
+            <CardContent className="p-6">
+              <div className="relative">
+                <button
+                  className="absolute top-2 right-2 bg-green-700 rounded py-1 px-2 z-10"
+                  onClick={copyToClipboard}
+                >
+                  Copy
+                </button>
+                <pre
+                  ref={textAreaRef}
+                  className="relative bg-black p-8 rounded-lg"
+                >
+                  <code className="flex flex-col">
+                    <div>
+                      <CssKey>margin</CssKey>
+                      <span className="text-white">
+                        {margin.top}em {margin.right}em {margin.bottom}em{" "}
+                        {margin.left}em;
+                      </span>
+                    </div>
+                    <div>
+                      <CssKey>padding</CssKey>
+                      <span className="text-white">
+                        {padding.top}em {padding.right}em {padding.bottom}em{" "}
+                        {padding.left}em;
+                      </span>
+                    </div>
+                    <div>
+                      <CssKey>border-radius</CssKey>
+                      <span className="text-white">
+                        {borderRadius.topLeft}em {borderRadius.topRight}
+                        em {borderRadius.bottomLeft}em{" "}
+                        {borderRadius.bottomRight}
+                        em;
+                      </span>
+                    </div>
+                    <div>
+                      <CssKey>background</CssKey>
+                      <span className="text-white">transparent;</span>
+                    </div>
+                    <div>
+                      <CssKey>background-image</CssKey>
+                      <span className="text-white">linear-gradient(</span>
+                    </div>
+                    <span className="text-white">{"  "}to right,</span>
+                    <span className="text-white">{`  ${color}1a,`}</span>
+                    <span className="text-white">{`  ${color}ae 4%,`}</span>
+                    <span className="text-white">{`  ${color}4d`}</span>
+                    <span className="text-white">);</span>
+                  </code>
+                </pre>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-        <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg gap-4">
-          <h2 className="text-2xl">Settings</h2>
-          <div className="flex flex-1 items-center w-full gap-4">
-            <Label className="w-20">Style</Label>
-            <Select defaultValue={Style.Gradient}>
-              <SelectTrigger>
-                <SelectValue placeholder="Style"></SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value={Style.Gradient}>Gradient</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <Separator />
-          <div className="flex flex-1 items-center w-full gap-4">
-            <Label className="w-20">Color</Label>
-            <div className="flex items-center w-full justify-around">
-              <Input
-                type="color"
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-                className="w-10 h-10 p-1"
-              />
-              <span>or</span>
-              <Input
-                type="text"
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-                className="w-24"
-              />
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-center">Settings</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-4">
+            <div className="flex flex-1 items-center w-full gap-4">
+              <Label className="w-20">Style</Label>
+              <Select defaultValue={Style.Gradient}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Style"></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={Style.Gradient}>Gradient</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-          </div>
-          <Separator />
-          <div className="flex w-full items-center gap-4">
-            <Label className="w-20">Margin</Label>
-            <div className="flex w-full flex-col justify-around gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/arrows-move-vertical.svg"
-                  width={24}
-                  height={24}
-                  alt="Arrows up and down"
+            <Separator />
+            <div className="flex flex-1 items-center w-full gap-4">
+              <Label className="w-20">Color</Label>
+              <div className="flex items-center w-full justify-around">
+                <Input
+                  type="color"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className="w-10 h-10 p-1"
                 />
-                <Slider
-                  value={[margin.top]}
-                  min={-0.6}
-                  max={1}
-                  onValueChange={(value) => changeYMargin(value[0])}
-                  step={0.1}
-                />
-              </div>
-              <div className="flex gap-2">
-                <Image
-                  src="/arrows-move-horizontal.svg"
-                  width={24}
-                  height={24}
-                  alt="Arrows left and right"
-                />
-                <Slider
-                  value={[margin.left]}
-                  min={-0.6}
-                  max={1}
-                  onValueChange={(value) => changeXMargin(value[0])}
-                  step={0.1}
+                <span>or</span>
+                <Input
+                  type="text"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  className="w-24"
                 />
               </div>
             </div>
-          </div>
-          <Separator />
-          <div className="flex w-full items-center gap-4">
-            <Label className="w-20">Padding</Label>
-            <div className="flex w-full flex-col justify-around gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/arrows-move-vertical.svg"
-                  width={24}
-                  height={24}
-                  alt="Arrows up and down"
-                />
-                <Slider
-                  value={[padding.top]}
-                  min={0}
-                  max={1}
-                  onValueChange={(value) => changeYPadding(value[0])}
-                  step={0.1}
-                />
-              </div>
-              <div className="flex gap-2">
-                <Image
-                  src="/arrows-move-horizontal.svg"
-                  width={24}
-                  height={24}
-                  alt="Arrows left and right"
-                />
-                <Slider
-                  value={[padding.left]}
-                  min={0}
-                  max={1}
-                  onValueChange={(value) => changeXPadding(value[0])}
-                  step={0.1}
-                />
-              </div>
-            </div>
-          </div>
-          <Separator />
-          <div className="flex w-full items-center gap-4">
-            <Label className="w-20">Border Radius</Label>
-            <div className="flex justify-around gap-4">
-              {["topLeft", "topRight", "bottomLeft", "bottomRight"].map(
-                (direction) => (
-                  <Input
-                    key={direction}
-                    type="number"
-                    step={0.2}
-                    value={borderRadius[direction]}
-                    onChange={(e) =>
-                      setBorderRadius({
-                        ...borderRadius,
-                        [direction]: parseFloat(e.target.value),
-                      })
-                    }
-                    className="w-16 p-2 text-slate-900"
+            <Separator />
+            <div className="flex w-full items-center gap-4">
+              <Label className="w-20">Margin</Label>
+              <div className="flex w-full flex-col justify-around gap-2">
+                <div className="flex gap-2">
+                  <Image
+                    src="/arrows-move-vertical.svg"
+                    width={24}
+                    height={24}
+                    alt="Arrows up and down"
                   />
-                )
-              )}
+                  <Slider
+                    value={[margin.top]}
+                    min={-0.6}
+                    max={1}
+                    onValueChange={(value) => changeYMargin(value[0])}
+                    step={0.1}
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <Image
+                    src="/arrows-move-horizontal.svg"
+                    width={24}
+                    height={24}
+                    alt="Arrows left and right"
+                  />
+                  <Slider
+                    value={[margin.left]}
+                    min={-0.6}
+                    max={1}
+                    onValueChange={(value) => changeXMargin(value[0])}
+                    step={0.1}
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+            <Separator />
+            <div className="flex w-full items-center gap-4">
+              <Label className="w-20">Padding</Label>
+              <div className="flex w-full flex-col justify-around gap-2">
+                <div className="flex gap-2">
+                  <Image
+                    src="/arrows-move-vertical.svg"
+                    width={24}
+                    height={24}
+                    alt="Arrows up and down"
+                  />
+                  <Slider
+                    value={[padding.top]}
+                    min={0}
+                    max={1}
+                    onValueChange={(value) => changeYPadding(value[0])}
+                    step={0.1}
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <Image
+                    src="/arrows-move-horizontal.svg"
+                    width={24}
+                    height={24}
+                    alt="Arrows left and right"
+                  />
+                  <Slider
+                    value={[padding.left]}
+                    min={0}
+                    max={1}
+                    onValueChange={(value) => changeXPadding(value[0])}
+                    step={0.1}
+                  />
+                </div>
+              </div>
+            </div>
+            <Separator />
+            <div className="flex w-full items-center gap-4">
+              <Label className="w-20">Border Radius</Label>
+              <div className="flex justify-around gap-4">
+                {["topLeft", "topRight", "bottomLeft", "bottomRight"].map(
+                  (direction) => (
+                    <Input
+                      key={direction}
+                      type="number"
+                      step={0.2}
+                      value={borderRadius[direction]}
+                      onChange={(e) =>
+                        setBorderRadius({
+                          ...borderRadius,
+                          [direction]: parseFloat(e.target.value),
+                        })
+                      }
+                      className="w-16 p-2 text-slate-900"
+                    />
+                  )
+                )}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </main>
   );
