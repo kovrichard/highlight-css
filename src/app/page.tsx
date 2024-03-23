@@ -3,9 +3,10 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { Slider } from "@/components/ui/slider";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 enum Style {
-  Gradient,
+  Gradient = "Gradient",
 }
 
 export default function Home() {
@@ -161,13 +162,14 @@ export default function Home() {
         <div className="flex flex-col items-center p-8 bg-card rounded-3xl shadow-lg">
           <h2 className="text-2xl">Settings</h2>
           <label className="text-2xl">Style</label>
-          <select
-            value={style}
-            onChange={(e) => setStyle(parseInt(e.target.value))}
-            className="w-64 p-2 text-slate-900"
-          >
-            <option value={Style.Gradient}>Gradient</option>
-          </select>
+          <Select defaultValue={Style.Gradient}>
+            <SelectTrigger>
+              <SelectValue placeholder="Style"></SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={Style.Gradient}>Gradient</SelectItem>
+            </SelectContent>
+          </Select>
           <div className="flex flex-col items-center p-8 rounded-3xl">
             <label className="text-2xl">Background Color</label>
             <div className="flex items-center gap-2">
