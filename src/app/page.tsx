@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
 enum Style {
+  Monochrome = "Monochrome",
   Gradient = "Gradient",
 }
 
@@ -119,18 +120,9 @@ export default function Home() {
               in{" "}
               <mark
                 style={{
-                  marginTop: `${margin.top}em`,
-                  marginRight: `${margin.right}em`,
-                  marginBottom: `${margin.bottom}em`,
-                  marginLeft: `${margin.left}em`,
-                  paddingTop: `${padding.top}em`,
-                  paddingRight: `${padding.right}em`,
-                  paddingBottom: `${padding.bottom}em`,
-                  paddingLeft: `${padding.left}em`,
-                  borderTopLeftRadius: `${borderRadius.topLeft}em`,
-                  borderTopRightRadius: `${borderRadius.topRight}em`,
-                  borderBottomLeftRadius: `${borderRadius.bottomLeft}em`,
-                  borderBottomRightRadius: `${borderRadius.bottomRight}em`,
+                  margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
+                  padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
+                  borderRadius: `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
                   background: "transparent",
                   backgroundImage: `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
                   WebkitBoxDecorationBreak: "clone",
@@ -214,12 +206,19 @@ export default function Home() {
           <CardContent className="flex flex-col gap-4">
             <div className="flex flex-1 items-center w-full gap-4">
               <Label className="w-20">Style</Label>
-              <Select defaultValue={Style.Gradient}>
+              <Select
+                defaultValue={Style.Gradient}
+                onValueChange={(value) => setStyle(value as Style)}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Style"></SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={Style.Gradient}>Gradient</SelectItem>
+                  {Object.values(Style).map((value) => (
+                    <SelectItem key={value} value={value}>
+                      {value}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
