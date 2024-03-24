@@ -90,14 +90,14 @@ export default function Home() {
   };
 
   return (
-    <main className="flex max-w-7xl flex-col items-center p-24 gap-12 m-auto">
-      <div className="flex flex-col items-center gap-4">
+    <main className="flex max-w-7xl flex-col items-center py-24 px-6 md:px-12 gap-12 m-auto">
+      <div className="flex flex-col text-center gap-4">
         <H1>Text Highlighter</H1>
         <H2>Generate highlighter effect CSS code</H2>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-around w-full">
-        <div className="flex flex-col items-center gap-14 w-[30rem]">
-          <p className="text-5xl text-center">
+      <div className="flex flex-row items-center justify-around w-full gap-8 flex-wrap">
+        <div className="flex flex-col items-center gap-14 max-w-[30rem]">
+          <p className="text-4xl lg:text-5xl text-center">
             <span>Highlight Your Text</span>{" "}
             <span>
               in{" "}
@@ -148,7 +148,7 @@ export default function Home() {
                   ref={textAreaRef}
                   className="relative bg-black p-8 rounded-lg"
                 >
-                  <code className="flex flex-col">
+                  <code className="flex flex-col text-pretty">
                     <div>
                       <CssKey>margin</CssKey>
                       <span className="text-white">

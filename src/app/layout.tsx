@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`relative min-h-screen ${inter.className}`}>
+      <body className={`relative min-h-screen min-w-[375px] ${inter.className}`}>
         <div className="absolute flex items-center top-4 right-4 gap-4">
           <Image
             src="/richard-kovacs.webp"
