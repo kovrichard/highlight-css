@@ -34,25 +34,19 @@ export default function Home() {
   const [margin, setMargin] = useState<{ [key: string]: number }>({
     top: 0,
     right: -0.4,
-    bottom: 0,
-    left: -0.4,
   });
   const [padding, setPadding] = useState<{ [key: string]: number }>({
     top: 0.1,
     right: 0.4,
-    bottom: 0.1,
-    left: 0.4,
   });
   const [borderRadius, setBorderRadius] = useState<{ [key: string]: number }>({
     topLeft: 0.8,
     topRight: 0.3,
-    bottomLeft: 0.3,
-    bottomRight: 0.8,
   });
   const [css, setCss] = useState<any>({
-    margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
-    padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
-    "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
+    margin: `${margin.top}em ${margin.right}em`,
+    padding: `${padding.top}em ${padding.right}em`,
+    "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
     background: "transparent",
     "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
     "-webkit-box-decoration-break": "clone",
@@ -70,7 +64,6 @@ export default function Home() {
   const changeXMargin = (value: number) => {
     setMargin({
       ...margin,
-      left: value,
       right: value,
     });
   };
@@ -79,14 +72,12 @@ export default function Home() {
     setMargin({
       ...margin,
       top: value,
-      bottom: value,
     });
   };
 
   const changeXPadding = (value: number) => {
     setPadding({
       ...padding,
-      left: value,
       right: value,
     });
   };
@@ -95,7 +86,6 @@ export default function Home() {
     setPadding({
       ...padding,
       top: value,
-      bottom: value,
     });
   };
 
@@ -122,18 +112,18 @@ export default function Home() {
   const changeStyle = () => {
     if (style === Style.Monochrome) {
       setCss({
-        margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
-        padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
-        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
+        margin: `${margin.top}em ${margin.right}em`,
+        padding: `${padding.top}em ${padding.right}em`,
+        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         "background-color": `${color}`,
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
     } else {
       setCss({
-        margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
-        padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
-        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
+        margin: `${margin.top}em ${margin.right}em`,
+        padding: `${padding.top}em ${padding.right}em`,
+        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         background: "transparent",
         "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
         "-webkit-box-decoration-break": "clone",
@@ -264,7 +254,7 @@ export default function Home() {
                     alt="Arrows left and right"
                   />
                   <Slider
-                    value={[margin.left]}
+                    value={[margin.right]}
                     min={-0.6}
                     max={1}
                     onValueChange={(value) => changeXMargin(value[0])}
@@ -300,7 +290,7 @@ export default function Home() {
                     alt="Arrows left and right"
                   />
                   <Slider
-                    value={[padding.left]}
+                    value={[padding.right]}
                     min={0}
                     max={1}
                     onValueChange={(value) => changeXPadding(value[0])}
@@ -359,7 +349,7 @@ export default function Home() {
                       />
                     </div>
                     <Slider
-                      value={[borderRadius.bottomLeft]}
+                      value={[borderRadius.topRight]}
                       min={0}
                       max={2}
                       onValueChange={(value) =>
