@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -48,6 +48,15 @@ export default function Home() {
     topRight: 0.3,
     bottomLeft: 0.3,
     bottomRight: 0.8,
+  });
+  const [css, setCss] = useState<any>({
+    margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
+    padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
+    "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
+    background: "transparent",
+    "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+    "-webkit-box-decoration-break": "clone",
+    "box-decoration-break": "clone",
   });
 
   const copyToClipboard = async () => {
@@ -106,6 +115,37 @@ export default function Home() {
     });
   };
 
+  const onStyleChange = (value: Style) => {
+    setStyle(value);
+  };
+
+  const changeStyle = () => {
+    if (style === Style.Monochrome) {
+      setCss({
+        margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
+        padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
+        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
+        "background-color": `${color}`,
+        "-webkit-box-decoration-break": "clone",
+        "box-decoration-break": "clone",
+      });
+    } else {
+      setCss({
+        margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
+        padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
+        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
+        background: "transparent",
+        "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+        "-webkit-box-decoration-break": "clone",
+        "box-decoration-break": "clone",
+      });
+    }
+  };
+
+  useEffect(() => {
+    changeStyle();
+  }, [style, color, margin, padding, borderRadius]);
+
   return (
     <main className="flex max-w-7xl flex-col items-center py-24 px-6 md:px-12 gap-12 m-auto">
       <div className="flex flex-col text-center gap-4">
@@ -117,21 +157,7 @@ export default function Home() {
           <p className="text-4xl lg:text-5xl text-center">
             <span>Highlight Your Text</span>{" "}
             <span>
-              in{" "}
-              <mark
-                style={{
-                  margin: `${margin.top}em ${margin.right}em ${margin.bottom}em ${margin.left}em`,
-                  padding: `${padding.top}em ${padding.right}em ${padding.bottom}em ${padding.left}em`,
-                  borderRadius: `${borderRadius.topLeft}em ${borderRadius.topRight}em ${borderRadius.bottomRight}em ${borderRadius.bottomLeft}em`,
-                  background: "transparent",
-                  backgroundImage: `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
-                  WebkitBoxDecorationBreak: "clone",
-                  boxDecorationBreak: "clone",
-                }}
-              >
-                Seconds
-              </mark>{" "}
-              Here
+              in <mark style={css}>Seconds</mark> Here
             </span>
           </p>
           {/*<input
@@ -157,42 +183,12 @@ export default function Home() {
                   className="relative bg-black p-8 rounded-lg"
                 >
                   <code className="flex flex-col text-pretty">
-                    <div>
-                      <CssKey>margin</CssKey>
-                      <span className="text-white">
-                        {margin.top}em {margin.right}em {margin.bottom}em{" "}
-                        {margin.left}em;
-                      </span>
-                    </div>
-                    <div>
-                      <CssKey>padding</CssKey>
-                      <span className="text-white">
-                        {padding.top}em {padding.right}em {padding.bottom}em{" "}
-                        {padding.left}em;
-                      </span>
-                    </div>
-                    <div>
-                      <CssKey>border-radius</CssKey>
-                      <span className="text-white">
-                        {borderRadius.topLeft}em {borderRadius.topRight}
-                        em {borderRadius.bottomLeft}em{" "}
-                        {borderRadius.bottomRight}
-                        em;
-                      </span>
-                    </div>
-                    <div>
-                      <CssKey>background</CssKey>
-                      <span className="text-white">transparent;</span>
-                    </div>
-                    <div>
-                      <CssKey>background-image</CssKey>
-                      <span className="text-white">linear-gradient(</span>
-                    </div>
-                    <span className="text-white">{"  "}to right,</span>
-                    <span className="text-white">{`  ${color}1a,`}</span>
-                    <span className="text-white">{`  ${color}ae 4%,`}</span>
-                    <span className="text-white">{`  ${color}4d`}</span>
-                    <span className="text-white">);</span>
+                    {Object.entries(css).map(([key, value]) => (
+                      <div key={key}>
+                        <CssKey>{key}</CssKey>
+                        <span className="text-white">{value};</span>
+                      </div>
+                    ))}
                   </code>
                 </pre>
               </div>
@@ -208,7 +204,7 @@ export default function Home() {
               <Label className="w-20">Style</Label>
               <Select
                 defaultValue={Style.Gradient}
-                onValueChange={(value) => setStyle(value as Style)}
+                onValueChange={(value) => onStyleChange(value as Style)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Style"></SelectValue>
