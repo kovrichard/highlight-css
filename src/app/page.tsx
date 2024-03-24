@@ -172,13 +172,15 @@ export default function Home() {
                   ref={textAreaRef}
                   className="relative bg-black p-8 rounded-lg"
                 >
-                  <code className="flex flex-col text-pretty">
+                  <code className="flex flex-col text-pretty text-white">
+                    <span>.highlight {"{"}</span>
                     {Object.entries(css).map(([key, value]) => (
                       <div key={key}>
                         <CssKey>{key}</CssKey>
-                        <span className="text-white">{value};</span>
+                        <span>{value};</span>
                       </div>
                     ))}
+                    <span>{"}"}</span>
                   </code>
                 </pre>
               </div>
