@@ -19,11 +19,34 @@ import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import styled from "styled-components";
 
 enum Style {
   Monochrome = "Monochrome",
   Gradient = "Gradient",
+  Slanting = "Slanting",
 }
+
+const slantingCss = {
+  content: '""',
+  position: "absolute",
+  width: "calc(100% + 0.5rem)",
+  height: "60%",
+  left: "-2px",
+  bottom: "0",
+  "z-index": "-1",
+  transform: "rotate(-2deg)",
+};
+
+const Mark = styled.mark`
+  position: relative;
+  &::after {
+    ${Object.entries(slantingCss)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join("\n")}
+    background-color: ${(props) => props.color};
+  }
+`;
 
 export default function Home() {
   const { toast } = useToast();
@@ -119,13 +142,22 @@ export default function Home() {
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
-    } else {
+    } else if (style === Style.Gradient) {
       setCss({
         margin: `${margin.top}em ${margin.right}em`,
         padding: `${padding.top}em ${padding.right}em`,
         "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         background: "transparent",
         "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+        "-webkit-box-decoration-break": "clone",
+        "box-decoration-break": "clone",
+      });
+    } else if (style === Style.Slanting) {
+      setCss({
+        margin: `${margin.top}em ${margin.right}em`,
+        padding: `${padding.top}em ${padding.right}em`,
+        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
+        background: "transparent",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
@@ -145,10 +177,13 @@ export default function Home() {
       <div className="flex flex-row items-center justify-around w-full gap-8 flex-wrap">
         <div className="flex flex-col items-center gap-14 max-w-[30rem]">
           <p className="text-4xl lg:text-5xl text-center">
-            <span>Highlight Your Text</span>{" "}
+            <span>Highlight Your Text in</span>{" "}
             <span>
-              in <mark style={css}>Seconds</mark> Here
+              <Mark style={css} color={style === Style.Slanting ? color : ""}>
+                Seconds
+              </Mark>{" "}
             </span>
+            <span>Here</span>
           </p>
           {/*<input
             type="text"
@@ -173,7 +208,16 @@ export default function Home() {
                   className="relative bg-black p-8 rounded-lg"
                 >
                   <code className="flex flex-col text-pretty text-white">
-                    <span>.highlight {"{"}</span>
+                    <div>
+                      <span className="text-[#a6e22e]">.highlight</span>
+                      <span>{" {"}</span>
+                    </div>
+                    {style === Style.Slanting && (
+                      <div>
+                        <CssKey>position</CssKey>
+                        <span>relative;</span>
+                      </div>
+                    )}
                     {Object.entries(css).map(([key, value]) => (
                       <div key={key}>
                         <CssKey>{key}</CssKey>
@@ -181,6 +225,28 @@ export default function Home() {
                       </div>
                     ))}
                     <span>{"}"}</span>
+                    {style === Style.Slanting && (
+                      <>
+                        <span> </span>
+                        <div>
+                          <span className="text-[#a6e22e]">
+                            .highlight::after
+                          </span>
+                          <span>{" {"}</span>
+                        </div>
+                        {Object.entries(slantingCss).map(([key, value]) => (
+                          <div key={key}>
+                            <CssKey>{key}</CssKey>
+                            <span>{value};</span>
+                          </div>
+                        ))}
+                        <div>
+                          <CssKey>background-color</CssKey>
+                          <span>{color};</span>
+                        </div>
+                        <span>{"}"}</span>
+                      </>
+                    )}
                   </code>
                 </pre>
               </div>
