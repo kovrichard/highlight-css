@@ -205,7 +205,8 @@ export default function Home() {
                 </Button>
                 <pre
                   ref={textAreaRef}
-                  className="relative bg-black p-8 rounded-lg"
+                  className="relative bg-black p-8 rounded-lg h-[22rem] overflow-y-scroll"
+                  style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
                 >
                   <code className="flex flex-col text-pretty text-white">
                     <div>
