@@ -20,11 +20,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import styled from "styled-components";
+import RealisticFilterShape from "@/components/realisticFilterShape";
 
 enum Style {
   Monochrome = "Monochrome",
   Gradient = "Gradient",
   Slanting = "Slanting",
+  Realistic = "Realistic",
 }
 
 const slantingCss = {
@@ -42,6 +44,27 @@ const SlantingMark = styled.mark`
   position: relative;
   &::after {
     ${Object.entries(slantingCss)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join("\n")}
+    background-color: ${(props) => props.color};
+  }
+`;
+
+const realisticCss = {
+  content: '""',
+  position: "absolute",
+  width: "100%",
+  height: "105%",
+  left: "-0.25rem",
+  top: "-0.05rem",
+  "z-index": "-1",
+  filter: "url(#marker-shape)",
+};
+
+const RealisticMark = styled.mark`
+  position: relative;
+  &::after {
+    ${Object.entries(realisticCss)
       .map(([key, value]) => `${key}: ${value};`)
       .join("\n")}
     background-color: ${(props) => props.color};
@@ -152,11 +175,10 @@ export default function Home() {
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
-    } else if (style === Style.Slanting) {
+    } else if (style === Style.Slanting || style === Style.Realistic) {
       setCss({
         margin: `${margin.top}em ${margin.right}em`,
         padding: `${padding.top}em ${padding.right}em`,
-        "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         background: "transparent",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
@@ -185,6 +207,13 @@ export default function Home() {
                 <SlantingMark style={css} color={color}>
                   Seconds
                 </SlantingMark>
+              ) : style === Style.Realistic ? (
+                <>
+                  <RealisticMark style={css} color={color}>
+                    Seconds
+                  </RealisticMark>
+                  <RealisticFilterShape />
+                </>
               ) : null}{" "}
             </span>
             <span>Here</span>
@@ -217,7 +246,7 @@ export default function Home() {
                       <span className="text-[#a6e22e]">.highlight</span>
                       <span>{" {"}</span>
                     </div>
-                    {style === Style.Slanting && (
+                    {(style === Style.Slanting || style === Style.Realistic) && (
                       <div>
                         <CssKey>position</CssKey>
                         <span>relative;</span>
@@ -240,6 +269,28 @@ export default function Home() {
                           <span>{" {"}</span>
                         </div>
                         {Object.entries(slantingCss).map(([key, value]) => (
+                          <div key={key}>
+                            <CssKey>{key}</CssKey>
+                            <span>{value};</span>
+                          </div>
+                        ))}
+                        <div>
+                          <CssKey>background-color</CssKey>
+                          <span>{color};</span>
+                        </div>
+                        <span>{"}"}</span>
+                      </>
+                    )}
+                    {style === Style.Realistic && (
+                      <>
+                        <span> </span>
+                        <div>
+                          <span className="text-[#a6e22e]">
+                            .highlight::after
+                          </span>
+                          <span>{" {"}</span>
+                        </div>
+                        {Object.entries(realisticCss).map(([key, value]) => (
                           <div key={key}>
                             <CssKey>{key}</CssKey>
                             <span>{value};</span>
