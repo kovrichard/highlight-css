@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import styled from "styled-components";
 import RealisticFilterShape from "@/components/realisticFilterShape";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 enum Style {
   Monochrome = "Monochrome",
@@ -103,7 +104,41 @@ export default function Home() {
     const text = textAreaRef.current?.innerText;
     await navigator.clipboard.writeText(text!);
     toast({
+      title: "Note",
       description: "Copied to clipboard",
+    });
+  };
+
+  const copyFilterSvg = async () => {
+    const text = `
+        <svg
+        xmlns="//www.w3.org/2000/svg"
+        version="1.1"
+        class="svg-filters"
+        style="display: none;"
+    >
+        <defs>
+        <filter id="marker-shape">
+            <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0 0.15"
+            numOctaves="1"
+            result="warp"
+            />
+            <feDisplacementMap
+            xChannelSelector="R"
+            yChannelSelector="G"
+            scale="30"
+            in="SourceGraphic"
+            in2="warp"
+            />
+        </filter>
+        </defs>
+    </svg>`;
+    await navigator.clipboard.writeText(text);
+    toast({
+      title: "Note",
+      description: "Filter SVG copied to clipboard",
     });
   };
 
@@ -197,7 +232,7 @@ export default function Home() {
         <H2>Generate highlighter effect CSS code</H2>
       </div>
       <div className="flex flex-row items-center justify-around w-full gap-8 flex-wrap">
-        <div className="flex flex-col items-center gap-14 max-w-[30rem]">
+        <div className="flex flex-col items-center gap-12 max-w-[30rem]">
           <p className="text-4xl lg:text-5xl text-center">
             <span>Highlight Your Text in</span>{" "}
             <span>
@@ -246,7 +281,8 @@ export default function Home() {
                       <span className="text-[#a6e22e]">.highlight</span>
                       <span>{" {"}</span>
                     </div>
-                    {(style === Style.Slanting || style === Style.Realistic) && (
+                    {(style === Style.Slanting ||
+                      style === Style.Realistic) && (
                       <div>
                         <CssKey>position</CssKey>
                         <span>relative;</span>
@@ -308,6 +344,22 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
+          {style === Style.Realistic && (
+            <div className="flex items-center px-6">
+              <Alert className="flex flex-col">
+                <AlertTitle>Note</AlertTitle>
+                <div className="flex gap-2">
+                  <AlertDescription>
+                    You also need a filter for this style. Put it somewhere in
+                    your HTML.
+                  </AlertDescription>
+                  <Button size="sm" onClick={copyFilterSvg}>
+                    Copy
+                  </Button>
+                </div>
+              </Alert>
+            </div>
+          )}
         </div>
         <Card className="flex-1 max-w-sm">
           <CardHeader>
