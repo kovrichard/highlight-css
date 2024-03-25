@@ -38,7 +38,7 @@ const slantingCss = {
   transform: "rotate(-2deg)",
 };
 
-const Mark = styled.mark`
+const SlantingMark = styled.mark`
   position: relative;
   &::after {
     ${Object.entries(slantingCss)
@@ -179,9 +179,13 @@ export default function Home() {
           <p className="text-4xl lg:text-5xl text-center">
             <span>Highlight Your Text in</span>{" "}
             <span>
-              <Mark style={css} color={style === Style.Slanting ? color : ""}>
-                Seconds
-              </Mark>{" "}
+              {style === Style.Monochrome || style === Style.Gradient ? (
+                <mark style={css}>Seconds</mark>
+              ) : style === Style.Slanting ? (
+                <SlantingMark style={css} color={color}>
+                  Seconds
+                </SlantingMark>
+              ) : null}{" "}
             </span>
             <span>Here</span>
           </p>
