@@ -5,54 +5,11 @@ import { H1 } from "@/components/ui/typography/h1";
 import { H2 } from "@/components/ui/typography/h2";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import styled from "styled-components";
-import RealisticFilterShape from "@/components/realisticFilterShape";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import CodeBlock from "@/components/codeBlock";
 import { Style } from "@/models/style";
 import Settings from "@/components/settings";
-
-const slantingCss = {
-  content: '""',
-  position: "absolute",
-  width: "calc(100% + 0.5rem)",
-  height: "60%",
-  left: "-2px",
-  bottom: "0",
-  "z-index": "-1",
-  transform: "rotate(-2deg)",
-};
-
-const SlantingMark = styled.mark`
-  position: relative;
-  &::after {
-    ${Object.entries(slantingCss)
-      .map(([key, value]) => `${key}: ${value};`)
-      .join("\n")}
-    background-color: ${(props) => props.color};
-  }
-`;
-
-const realisticCss = {
-  content: '""',
-  position: "absolute",
-  width: "100%",
-  height: "105%",
-  left: "-0.25rem",
-  top: "-0.05rem",
-  "z-index": "-1",
-  filter: "url(#marker-shape)",
-};
-
-const RealisticMark = styled.mark`
-  position: relative;
-  &::after {
-    ${Object.entries(realisticCss)
-      .map(([key, value]) => `${key}: ${value};`)
-      .join("\n")}
-    background-color: ${(props) => props.color};
-  }
-`;
+import Motto from "@/components/motto";
 
 export default function Home() {
   const { toast } = useToast();
@@ -201,26 +158,7 @@ export default function Home() {
       </div>
       <div className="flex flex-row items-center justify-around w-full gap-8 flex-wrap">
         <div className="flex flex-col items-center gap-12 max-w-[30rem]">
-          <p className="text-4xl lg:text-5xl text-center">
-            <span>Highlight Your Text in</span>{" "}
-            <span>
-              {style === Style.Monochrome || style === Style.Gradient ? (
-                <mark style={css}>Seconds</mark>
-              ) : style === Style.Slanting ? (
-                <SlantingMark style={css} color={color}>
-                  Seconds
-                </SlantingMark>
-              ) : style === Style.Realistic ? (
-                <>
-                  <RealisticMark style={css} color={color}>
-                    Seconds
-                  </RealisticMark>
-                  <RealisticFilterShape />
-                </>
-              ) : null}{" "}
-            </span>
-            <span>Here</span>
-          </p>
+          <Motto style={style} color={color} css={css} />
           {/*<input
             type="text"
             value={text}
@@ -228,13 +166,7 @@ export default function Home() {
             className="w-64 p-2"
             style={{ color: "black" }}
           />*/}
-          <CodeBlock
-            css={css}
-            slantingCss={slantingCss}
-            realisticCss={realisticCss}
-            style={style}
-            color={color}
-          />
+          <CodeBlock css={css} style={style} color={color} />
 
           {style === Style.Realistic && (
             <div className="flex items-center px-6">

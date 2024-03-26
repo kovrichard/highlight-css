@@ -5,17 +5,14 @@ import { CssKey } from "./ui/typography/cssKey";
 import { useToast } from "./ui/use-toast";
 import Image from "next/image";
 import { Style } from "@/models/style";
+import { realisticCss, slantingCss } from "@/lib/utils";
 
 export default function CodeBlock({
   css,
-  slantingCss,
-  realisticCss,
   color,
   style,
 }: Readonly<{
   css: Record<string, string>;
-  slantingCss: Record<string, string>;
-  realisticCss: Record<string, string>;
   color: string;
   style: Style;
 }>) {
