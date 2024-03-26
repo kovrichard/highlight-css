@@ -90,7 +90,7 @@ export default function Home() {
     topLeft: 0.8,
     topRight: 0.3,
   });
-  const [css, setCss] = useState<any>({
+  const [css, setCss] = useState<{ [key: string]: string }>({
     margin: `${margin.top}em ${margin.right}em`,
     padding: `${padding.top}em ${padding.right}em`,
     "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
