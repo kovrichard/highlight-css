@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { H1 } from "@/components/ui/typography/h1";
 import { H2 } from "@/components/ui/typography/h2";
-import { CssKey } from "@/components/ui/typography/cssKey";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,13 +21,10 @@ import { useToast } from "@/components/ui/use-toast";
 import styled from "styled-components";
 import RealisticFilterShape from "@/components/realisticFilterShape";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import CodeBlock from "@/components/codeBlock";
+import { Style } from "@/models/style";
 
-enum Style {
-  Monochrome = "Monochrome",
-  Gradient = "Gradient",
-  Slanting = "Slanting",
-  Realistic = "Realistic",
-}
+
 
 const slantingCss = {
   content: '""',
@@ -75,7 +71,6 @@ const RealisticMark = styled.mark`
 export default function Home() {
   const { toast } = useToast();
   const [text, setText] = useState("Seconds");
-  const textAreaRef = useRef<HTMLPreElement>(null);
   const [style, setStyle] = useState<Style>(Style.Gradient);
   const [color, setColor] = useState<string>("#ffe100");
   const [margin, setMargin] = useState<{ [key: string]: number }>({
@@ -99,15 +94,6 @@ export default function Home() {
     "-webkit-box-decoration-break": "clone",
     "box-decoration-break": "clone",
   });
-
-  const copyToClipboard = async () => {
-    const text = textAreaRef.current?.innerText;
-    await navigator.clipboard.writeText(text!);
-    toast({
-      title: "Note",
-      description: "Copied to clipboard",
-    });
-  };
 
   const copyFilterSvg = async () => {
     const text = `
@@ -260,90 +246,14 @@ export default function Home() {
             className="w-64 p-2"
             style={{ color: "black" }}
           />*/}
-          <Card>
-            <CardContent className="p-6">
-              <div className="relative">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute top-2 right-2 z-10"
-                  onClick={copyToClipboard}
-                >
-                  <Image src="/copy.svg" width={24} height={24} alt="Copy" />
-                </Button>
-                <pre
-                  ref={textAreaRef}
-                  className="relative bg-black p-8 rounded-xl h-[22rem] overflow-y-scroll"
-                  style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
-                >
-                  <code className="flex flex-col text-pretty text-white">
-                    <div>
-                      <span className="text-[#a6e22e]">.highlight</span>
-                      <span>{" {"}</span>
-                    </div>
-                    {(style === Style.Slanting ||
-                      style === Style.Realistic) && (
-                      <div>
-                        <CssKey>position</CssKey>
-                        <span>relative;</span>
-                      </div>
-                    )}
-                    {Object.entries(css).map(([key, value]) => (
-                      <div key={key}>
-                        <CssKey>{key}</CssKey>
-                        <span>{value};</span>
-                      </div>
-                    ))}
-                    <span>{"}"}</span>
-                    {style === Style.Slanting && (
-                      <>
-                        <span> </span>
-                        <div>
-                          <span className="text-[#a6e22e]">
-                            .highlight::after
-                          </span>
-                          <span>{" {"}</span>
-                        </div>
-                        {Object.entries(slantingCss).map(([key, value]) => (
-                          <div key={key}>
-                            <CssKey>{key}</CssKey>
-                            <span>{value};</span>
-                          </div>
-                        ))}
-                        <div>
-                          <CssKey>background-color</CssKey>
-                          <span>{color};</span>
-                        </div>
-                        <span>{"}"}</span>
-                      </>
-                    )}
-                    {style === Style.Realistic && (
-                      <>
-                        <span> </span>
-                        <div>
-                          <span className="text-[#a6e22e]">
-                            .highlight::after
-                          </span>
-                          <span>{" {"}</span>
-                        </div>
-                        {Object.entries(realisticCss).map(([key, value]) => (
-                          <div key={key}>
-                            <CssKey>{key}</CssKey>
-                            <span>{value};</span>
-                          </div>
-                        ))}
-                        <div>
-                          <CssKey>background-color</CssKey>
-                          <span>{color};</span>
-                        </div>
-                        <span>{"}"}</span>
-                      </>
-                    )}
-                  </code>
-                </pre>
-              </div>
-            </CardContent>
-          </Card>
+          <CodeBlock
+            css={css}
+            slantingCss={slantingCss}
+            realisticCss={realisticCss}
+            style={style}
+            color={color}
+          />
+
           {style === Style.Realistic && (
             <div className="flex items-center px-6">
               <Alert className="flex flex-col">
