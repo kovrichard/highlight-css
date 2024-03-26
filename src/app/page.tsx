@@ -265,15 +265,15 @@ export default function Home() {
               <div className="relative">
                 <Button
                   variant="outline"
-                  size="sm"
+                  size="icon"
                   className="absolute top-2 right-2 z-10"
                   onClick={copyToClipboard}
                 >
-                  Copy
+                  <Image src="/copy.svg" width={24} height={24} alt="Copy" />
                 </Button>
                 <pre
                   ref={textAreaRef}
-                  className="relative bg-black p-8 rounded-lg h-[22rem] overflow-y-scroll"
+                  className="relative bg-black p-8 rounded-xl h-[22rem] overflow-y-scroll"
                   style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
                 >
                   <code className="flex flex-col text-pretty text-white">
