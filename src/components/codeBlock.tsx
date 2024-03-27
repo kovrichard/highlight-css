@@ -11,10 +11,12 @@ export default function CodeBlock({
   css,
   color,
   style,
+  className = "",
 }: Readonly<{
   css: Record<string, string>;
   color: string;
   style: Style;
+  className?: string;
 }>) {
   const { toast } = useToast();
   const textAreaRef = useRef<HTMLPreElement>(null);
@@ -29,7 +31,7 @@ export default function CodeBlock({
   };
 
   return (
-    <Card>
+    <Card className={`max-w-[30rem] ${className}`}>
       <CardContent className="p-6">
         <div className="relative">
           <Button

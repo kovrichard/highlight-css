@@ -166,7 +166,12 @@ export default function Home() {
             className="w-64 p-2"
             style={{ color: "black" }}
           />*/}
-          <CodeBlock css={css} style={style} color={color} />
+          <CodeBlock
+            css={css}
+            style={style}
+            color={color}
+            className="hidden lg:block"
+          />
 
           {style === Style.Realistic && (
             <div className="flex items-center px-6">
@@ -185,20 +190,28 @@ export default function Home() {
             </div>
           )}
         </div>
-        <Settings
-          setStyle={setStyle}
-          color={color}
-          setColor={setColor}
-          margin={margin}
-          padding={padding}
-          borderRadius={borderRadius}
-          changeYMargin={changeYMargin}
-          changeXMargin={changeXMargin}
-          changeYPadding={changeYPadding}
-          changeXPadding={changeXPadding}
-          changeTopLeftBottomRightRadius={changeTopLeftBottomRightRadius}
-          changeBottomLeftTopRightRadius={changeBottomLeftTopRightRadius}
-        />
+        <div className="flex flex-wrap lg:flex-1 items-center justify-center gap-8 sm:flex-row-reverse max-w-[30rem]">
+          <Settings
+            setStyle={setStyle}
+            color={color}
+            setColor={setColor}
+            margin={margin}
+            padding={padding}
+            borderRadius={borderRadius}
+            changeYMargin={changeYMargin}
+            changeXMargin={changeXMargin}
+            changeYPadding={changeYPadding}
+            changeXPadding={changeXPadding}
+            changeTopLeftBottomRightRadius={changeTopLeftBottomRightRadius}
+            changeBottomLeftTopRightRadius={changeBottomLeftTopRightRadius}
+          />
+          <CodeBlock
+            css={css}
+            style={style}
+            color={color}
+            className="lg:hidden"
+          />
+        </div>
       </div>
     </main>
   );
