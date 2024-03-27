@@ -16,7 +16,31 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@rchardkovacs",
+    description:
+      "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
+    title: "Text Highlighter CSS Generator",
   },
+  keywords: [
+    "highlight",
+    "highlighter",
+    "text",
+    "css",
+    "generator",
+    "mark",
+    "html",
+    "copy",
+  ],
+  creator: "Richard Kovacs",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    url: "https://www.highlightcss.com",
+    title: "Text Highlighter CSS Generator",
+    description:
+      "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
+    siteName: "Text Highlighter CSS Generator",
+  },
+  category: "Web Development",
 };
 
 export default function RootLayout({
