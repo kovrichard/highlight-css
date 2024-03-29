@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Free Online Text Highlighter CSS Generator",
     images: [
       {
-        url: "/cover.png",
+        url: "https://www.highlightcss.com/cover.png",
         width: 1200,
         height: 630,
         alt: "Free Online Text Highlighter CSS Generator",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "Free Online Text Highlighter CSS Generator",
     images: [
       {
-        url: "/cover.png",
+        url: "https://www.highlightcss.com/cover.png",
         width: 1200,
         height: 630,
         alt: "Free Online Text Highlighter CSS Generator",
