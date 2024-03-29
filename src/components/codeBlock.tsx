@@ -5,7 +5,13 @@ import { CssKey } from "./ui/typography/cssKey";
 import { useToast } from "./ui/use-toast";
 import Image from "next/image";
 import { Style } from "@/models/style";
-import { realisticCss, slantingCss } from "@/lib/utils";
+import { filterSvg, realisticCss, slantingCss } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 export default function CodeBlock({
   css,
@@ -26,22 +32,57 @@ export default function CodeBlock({
     await navigator.clipboard.writeText(text!);
     toast({
       title: "Note",
-      description: "Copied to clipboard",
+      description: "CSS copied to clipboard",
+    });
+  };
+
+  const copyFilterSvg = async () => {
+    await navigator.clipboard.writeText(filterSvg);
+    toast({
+      title: "Note",
+      description: "Filter SVG copied to clipboard",
     });
   };
 
   return (
-    <Card className={`max-w-[30rem] ${className}`}>
+    <Card className={`max-w-[28rem] ${className}`}>
       <CardContent className="p-6 text-sm sm:text-base">
         <div className="relative">
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute top-2 right-2 z-10"
-            onClick={copyToClipboard}
-          >
-            <Image src="/copy.svg" width={24} height={24} alt="Copy" />
-          </Button>
+          <TooltipProvider>
+            {style === Style.Realistic && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="absolute top-2 right-14 z-10"
+                    onClick={copyFilterSvg}
+                  >
+                    <Image
+                      src="/file-type-svg.svg"
+                      width={24}
+                      height={24}
+                      alt="Copy"
+                    />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Copy SVG Filter</TooltipContent>
+              </Tooltip>
+            )}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="absolute top-2 right-2 z-10"
+                  onClick={copyToClipboard}
+                >
+                  <Image src="/copy.svg" width={24} height={24} alt="Copy" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Copy CSS Code</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <pre
             ref={textAreaRef}
             className="relative bg-black p-8 rounded-xl h-[22rem] overflow-y-scroll"
