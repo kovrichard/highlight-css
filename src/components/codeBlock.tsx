@@ -3,7 +3,6 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { CssKey } from "./ui/typography/cssKey";
 import { useToast } from "./ui/use-toast";
-import Image from "next/image";
 import { Style } from "@/models/style";
 import { filterSvg, realisticCss, slantingCss } from "@/lib/utils";
 import {
@@ -12,6 +11,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
+import Copy from "./icons/copy";
+import FileTypeSvg from "./icons/file-type-svg";
 
 export default function CodeBlock({
   css,
@@ -58,12 +59,7 @@ export default function CodeBlock({
                     className="absolute top-2 right-14 z-10"
                     onClick={copyFilterSvg}
                   >
-                    <Image
-                      src="/file-type-svg.svg"
-                      width={24}
-                      height={24}
-                      alt="Copy"
-                    />
+                    <FileTypeSvg />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>Copy SVG Filter</TooltipContent>
@@ -77,7 +73,7 @@ export default function CodeBlock({
                   className="absolute top-2 right-2 z-10"
                   onClick={copyToClipboard}
                 >
-                  <Image src="/copy.svg" width={24} height={24} alt="Copy" />
+                  <Copy />
                 </Button>
               </TooltipTrigger>
               <TooltipContent>Copy CSS Code</TooltipContent>

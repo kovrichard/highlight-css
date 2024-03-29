@@ -4,6 +4,7 @@ import "./globals.css";
 import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "../components/theme-provider";
+import { DarkModeToggle } from "@/components/dark-mode";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,6 +62,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="absolute flex items-center top-4 right-4 gap-4">
+            <DarkModeToggle />
             <Image
               src="/richard-kovacs.webp"
               alt="Richard Kovacs"
