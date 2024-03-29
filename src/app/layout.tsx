@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Text Highlighter CSS Generator",
+  title: "Free Online Text Highlighter CSS Generator",
   description:
     "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
   alternates: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     creator: "@rchardkovacs",
     description:
       "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
-    title: "Text Highlighter CSS Generator",
+    title: "Free Online Text Highlighter CSS Generator",
   },
   keywords: [
     "highlight",
@@ -32,16 +32,18 @@ export const metadata: Metadata = {
     "mark",
     "html",
     "copy",
+    "free",
+    "online",
   ],
   creator: "Richard Kovacs",
   robots: "index, follow",
   openGraph: {
     type: "website",
     url: "https://www.highlightcss.com",
-    title: "Text Highlighter CSS Generator",
+    title: "Free Online Text Highlighter CSS Generator",
     description:
       "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
-    siteName: "Text Highlighter CSS Generator",
+    siteName: "Free Online Text Highlighter CSS Generator",
   },
   category: "Web Development",
 };
