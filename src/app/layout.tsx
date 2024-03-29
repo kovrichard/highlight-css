@@ -23,6 +23,14 @@ export const metadata: Metadata = {
     description:
       "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
     title: "Free Online Text Highlighter CSS Generator",
+    images: [
+      {
+        url: "/cover.png",
+        width: 1200,
+        height: 630,
+        alt: "Free Online Text Highlighter CSS Generator",
+      },
+    ],
   },
   keywords: [
     "highlight",
@@ -45,6 +53,14 @@ export const metadata: Metadata = {
     description:
       "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
     siteName: "Free Online Text Highlighter CSS Generator",
+    images: [
+      {
+        url: "/cover.png",
+        width: 1200,
+        height: 630,
+        alt: "Free Online Text Highlighter CSS Generator",
+      },
+    ],
   },
   category: "Web Development",
 };
