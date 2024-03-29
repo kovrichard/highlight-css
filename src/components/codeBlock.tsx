@@ -13,6 +13,7 @@ import {
 } from "./ui/tooltip";
 import Copy from "./icons/copy";
 import FileTypeSvg from "./icons/file-type-svg";
+import { ScrollArea } from "./ui/scroll-area";
 
 export default function CodeBlock({
   css,
@@ -79,71 +80,69 @@ export default function CodeBlock({
               <TooltipContent>Copy CSS Code</TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <pre
-            ref={textAreaRef}
-            className="relative bg-black p-8 rounded-xl h-[22rem] overflow-y-scroll"
-            style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
-          >
-            <code className="flex flex-col text-pretty text-white">
-              <div>
-                <span className="text-[#a6e22e]">.highlight</span>
-                <span>{" {"}</span>
-              </div>
-              {(style === Style.Slanting || style === Style.Realistic) && (
+          <ScrollArea className="h-96 rounded-xl bg-black">
+            <pre ref={textAreaRef} className="relative p-8">
+              <code className="flex flex-col text-pretty text-white">
                 <div>
-                  <CssKey>position</CssKey>
-                  <span>relative;</span>
+                  <span className="text-[#a6e22e]">.highlight</span>
+                  <span>{" {"}</span>
                 </div>
-              )}
-              {Object.entries(css).map(([key, value]) => (
-                <div key={key}>
-                  <CssKey>{key}</CssKey>
-                  <span>{value};</span>
-                </div>
-              ))}
-              <span>{"}"}</span>
-              {style === Style.Slanting && (
-                <>
-                  <span> </span>
+                {(style === Style.Slanting || style === Style.Realistic) && (
                   <div>
-                    <span className="text-[#a6e22e]">.highlight::after</span>
-                    <span>{" {"}</span>
+                    <CssKey>position</CssKey>
+                    <span>relative;</span>
                   </div>
-                  {Object.entries(slantingCss).map(([key, value]) => (
-                    <div key={key}>
-                      <CssKey>{key}</CssKey>
-                      <span>{value};</span>
+                )}
+                {Object.entries(css).map(([key, value]) => (
+                  <div key={key}>
+                    <CssKey>{key}</CssKey>
+                    <span>{value};</span>
+                  </div>
+                ))}
+                <span>{"}"}</span>
+                {style === Style.Slanting && (
+                  <>
+                    <span> </span>
+                    <div>
+                      <span className="text-[#a6e22e]">.highlight::after</span>
+                      <span>{" {"}</span>
                     </div>
-                  ))}
-                  <div>
-                    <CssKey>background-color</CssKey>
-                    <span>{color};</span>
-                  </div>
-                  <span>{"}"}</span>
-                </>
-              )}
-              {style === Style.Realistic && (
-                <>
-                  <span> </span>
-                  <div>
-                    <span className="text-[#a6e22e]">.highlight::after</span>
-                    <span>{" {"}</span>
-                  </div>
-                  {Object.entries(realisticCss).map(([key, value]) => (
-                    <div key={key}>
-                      <CssKey>{key}</CssKey>
-                      <span>{value};</span>
+                    {Object.entries(slantingCss).map(([key, value]) => (
+                      <div key={key}>
+                        <CssKey>{key}</CssKey>
+                        <span>{value};</span>
+                      </div>
+                    ))}
+                    <div>
+                      <CssKey>background-color</CssKey>
+                      <span>{color};</span>
                     </div>
-                  ))}
-                  <div>
-                    <CssKey>background-color</CssKey>
-                    <span>{color};</span>
-                  </div>
-                  <span>{"}"}</span>
-                </>
-              )}
-            </code>
-          </pre>
+                    <span>{"}"}</span>
+                  </>
+                )}
+                {style === Style.Realistic && (
+                  <>
+                    <span> </span>
+                    <div>
+                      <span className="text-[#a6e22e]">.highlight::after</span>
+                      <span>{" {"}</span>
+                    </div>
+                    {Object.entries(realisticCss).map(([key, value]) => (
+                      <div key={key}>
+                        <CssKey>{key}</CssKey>
+                        <span>{value};</span>
+                      </div>
+                    ))}
+                    <div>
+                      <CssKey>background-color</CssKey>
+                      <span>{color};</span>
+                    </div>
+                    <span>{"}"}</span>
+                  </>
+                )}
+              </code>
+            </pre>
+          </ScrollArea>
         </div>
       </CardContent>
     </Card>
