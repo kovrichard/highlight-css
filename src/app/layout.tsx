@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "../components/theme-provider";
 import { DarkModeToggle } from "@/components/dark-mode";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -63,13 +64,10 @@ export default function RootLayout({
         >
           <div className="absolute flex items-center top-4 right-4 gap-4">
             <DarkModeToggle />
-            <Image
-              src="/richard-kovacs.webp"
-              alt="Richard Kovacs"
-              className="w-12 h-12 rounded-full"
-              width={48}
-              height={48}
-            />
+            <Avatar>
+              <AvatarImage src="/richard-kovacs.webp" alt="Richard Kovacs" />
+              <AvatarFallback>RK</AvatarFallback>
+            </Avatar>
             <a
               href="https://twitter.com/rchardkovacs"
               target="_blank"
