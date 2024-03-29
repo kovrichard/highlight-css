@@ -34,6 +34,7 @@ export default function Home() {
     padding: `${padding.top}em ${padding.right}em`,
     "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
     background: "transparent",
+    color: "currentColor",
     "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
     "-webkit-box-decoration-break": "clone",
     "box-decoration-break": "clone",
@@ -123,6 +124,7 @@ export default function Home() {
         padding: `${padding.top}em ${padding.right}em`,
         "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         "background-color": `${color}`,
+        "color": "currentColor",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
@@ -132,6 +134,7 @@ export default function Home() {
         padding: `${padding.top}em ${padding.right}em`,
         "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         background: "transparent",
+        color: "currentColor",
         "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
@@ -141,6 +144,7 @@ export default function Home() {
         margin: `${margin.top}em ${margin.right}em`,
         padding: `${padding.top}em ${padding.right}em`,
         background: "transparent",
+        color: "currentColor",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
@@ -149,6 +153,7 @@ export default function Home() {
         margin: `${margin.top}em ${margin.right}em`,
         padding: `${padding.top}em ${padding.right}em`,
         background: "transparent",
+        color: "currentColor",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });

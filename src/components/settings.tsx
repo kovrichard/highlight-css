@@ -93,7 +93,7 @@ export default function Settings({
         <div className="flex w-full items-center gap-4">
           <Label className="w-20">Margin</Label>
           <div className="flex w-full flex-col justify-around gap-2">
-            <div className="flex gap-2">
+            {/*<div className="flex gap-2">
               <Image
                 src="/arrows-move-vertical.svg"
                 width={24}
@@ -107,7 +107,7 @@ export default function Settings({
                 onValueChange={(value) => changeYMargin(value[0])}
                 step={0.1}
               />
-            </div>
+              </div>*/}
             <div className="flex gap-2">
               <Image
                 src="/arrows-move-horizontal.svg"
@@ -117,7 +117,7 @@ export default function Settings({
               />
               <Slider
                 value={[margin.right]}
-                min={-0.6}
+                min={-1.1}
                 max={1}
                 onValueChange={(value) => changeXMargin(value[0])}
                 step={0.1}
