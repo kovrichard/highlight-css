@@ -10,6 +10,7 @@ import CodeBlock from "@/components/codeBlock";
 import { Style } from "@/models/style";
 import Settings from "@/components/settings";
 import Motto from "@/components/motto";
+import { ToastAction } from "@/components/ui/toast";
 
 export default function Home() {
   const { toast } = useToast();
@@ -135,13 +136,34 @@ export default function Home() {
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
-    } else if (style === Style.Slanting || style === Style.Realistic) {
+    } else if (style === Style.Slanting) {
       setCss({
         margin: `${margin.top}em ${margin.right}em`,
         padding: `${padding.top}em ${padding.right}em`,
         background: "transparent",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
+      });
+    } else if (style === Style.Realistic) {
+      setCss({
+        margin: `${margin.top}em ${margin.right}em`,
+        padding: `${padding.top}em ${padding.right}em`,
+        background: "transparent",
+        "-webkit-box-decoration-break": "clone",
+        "box-decoration-break": "clone",
+      });
+      toast({
+        title: "Note",
+        description:
+          "You also need a filter for this style. Put it somewhere in your HTML.",
+        action: (
+          <ToastAction
+            onClick={copyFilterSvg}
+            altText="Copy the SVG from the code block"
+          >
+            Copy
+          </ToastAction>
+        ),
       });
     }
   };
@@ -172,23 +194,6 @@ export default function Home() {
             color={color}
             className="hidden lg:block"
           />
-
-          {style === Style.Realistic && (
-            <div className="flex items-center px-6">
-              <Alert className="flex flex-col">
-                <AlertTitle>Note</AlertTitle>
-                <div className="flex gap-2">
-                  <AlertDescription>
-                    You also need a filter for this style. Put it somewhere in
-                    your HTML.
-                  </AlertDescription>
-                  <Button size="sm" onClick={copyFilterSvg}>
-                    Copy
-                  </Button>
-                </div>
-              </Alert>
-            </div>
-          )}
         </div>
         <div className="flex flex-wrap lg:flex-1 items-center justify-center gap-8 sm:flex-row-reverse max-w-[30rem]">
           <Settings
