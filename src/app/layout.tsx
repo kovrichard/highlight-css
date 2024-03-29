@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "../components/theme-provider";
 import { DarkModeToggle } from "@/components/dark-mode";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Analytics from "@/components/analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,6 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Analytics />
       <body
         className={`relative min-h-screen min-w-[375px] ${inter.className}`}
       >
