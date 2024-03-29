@@ -62,7 +62,7 @@ export default function CodeBlock({
                     <FileTypeSvg />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>Copy SVG Filter</TooltipContent>
+                <TooltipContent>Copy Filter SVG</TooltipContent>
               </Tooltip>
             )}
             <Tooltip>
