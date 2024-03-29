@@ -51,7 +51,7 @@ export default function Settings({
       <CardHeader>
         <CardTitle className="text-center">Settings</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
+      <CardContent className="flex flex-col gap-2 sm:gap-4">
         <div className="flex flex-1 items-center w-full gap-4">
           <Label className="w-20">Style</Label>
           <Select

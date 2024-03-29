@@ -32,7 +32,7 @@ export default function CodeBlock({
 
   return (
     <Card className={`max-w-[30rem] ${className}`}>
-      <CardContent className="p-6">
+      <CardContent className="p-6 text-sm sm:text-base">
         <div className="relative">
           <Button
             variant="outline"

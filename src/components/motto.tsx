@@ -31,7 +31,7 @@ type MottoProps = {
 
 export default function Motto({ style, color, css }: MottoProps) {
   return (
-    <p className="text-4xl lg:text-5xl text-center">
+    <p className="text-3xl lg:text-5xl text-center max-w-[27rem]">
       <span>Highlight Your Text in</span>{" "}
       <span>
         {style === Style.Monochrome || style === Style.Gradient ? (
