@@ -57,6 +57,7 @@ export default function CodeBlock({
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
+                    id="copy-filter-svg"
                     variant="outline"
                     size="icon"
                     className="absolute top-2 right-14 z-10"
@@ -71,6 +72,7 @@ export default function CodeBlock({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
+                  id="copy-css-code"
                   variant="outline"
                   size="icon"
                   className="absolute top-2 right-2 z-10"
