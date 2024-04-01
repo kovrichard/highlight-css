@@ -124,7 +124,7 @@ export default function Home() {
         padding: `${padding.top}em ${padding.right}em`,
         "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         "background-color": `${color}`,
-        "color": "currentColor",
+        color: "currentColor",
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
@@ -183,7 +183,7 @@ export default function Home() {
         <H1>Text Highlighter</H1>
         <H2>Generate highlighter effect CSS code</H2>
       </div>
-      <div className="flex flex-row items-center justify-around w-full gap-8 flex-wrap">
+      <div className="flex flex-row items-start justify-around w-full gap-8 flex-wrap">
         <div className="flex flex-col items-center gap-12 max-w-[30rem]">
           <Motto style={style} color={color} css={css} />
           {/*<input
@@ -200,8 +200,9 @@ export default function Home() {
             className="hidden lg:block"
           />
         </div>
-        <div className="flex flex-wrap lg:flex-1 items-center justify-center gap-8 sm:flex-row-reverse max-w-[30rem]">
+        <div className="flex flex-wrap lg:flex-1 items-center justify-center gap-8 sm:flex-row-reverse max-w-[30rem] lg:mt-16">
           <Settings
+            style={style}
             setStyle={setStyle}
             color={color}
             setColor={setColor}

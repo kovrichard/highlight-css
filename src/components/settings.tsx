@@ -14,6 +14,7 @@ import { Slider } from "./ui/slider";
 import Image from "next/image";
 
 type SettingsProps = {
+  style: Style;
   setStyle: (value: Style) => void;
   color: string;
   setColor: (value: string) => void;
@@ -29,6 +30,7 @@ type SettingsProps = {
 };
 
 export default function Settings({
+  style,
   setStyle,
   color,
   setColor,
@@ -161,68 +163,72 @@ export default function Settings({
             </div>
           </div>
         </div>
-        <Separator />
-        <div className="flex w-full items-center gap-4">
-          <Label className="w-20">Border Radius</Label>
-          <div className="flex justify-around w-full gap-4">
-            <div className="flex w-full flex-col justify-around gap-2">
-              <div className="flex gap-2">
-                <div className="flex">
-                  <Image
-                    src="/radius-top-left.svg"
-                    alt="Top left radius"
-                    width={16}
-                    height={16}
-                    className="-mr-1 mb-2"
-                  />
-                  <Image
-                    src="/radius-bottom-right.svg"
-                    alt="Bottom right radius"
-                    width={16}
-                    height={16}
-                    className="-ml-1 mt-2"
-                  />
+        {(style === Style.Monochrome || style === Style.Gradient) && (
+          <>
+            <Separator />
+            <div className="flex w-full items-center gap-4">
+              <Label className="w-20">Border Radius</Label>
+              <div className="flex justify-around w-full gap-4">
+                <div className="flex w-full flex-col justify-around gap-2">
+                  <div className="flex gap-2">
+                    <div className="flex">
+                      <Image
+                        src="/radius-top-left.svg"
+                        alt="Top left radius"
+                        width={16}
+                        height={16}
+                        className="-mr-1 mb-2"
+                      />
+                      <Image
+                        src="/radius-bottom-right.svg"
+                        alt="Bottom right radius"
+                        width={16}
+                        height={16}
+                        className="-ml-1 mt-2"
+                      />
+                    </div>
+                    <Slider
+                      value={[borderRadius.topLeft]}
+                      min={0}
+                      max={2}
+                      onValueChange={(value) =>
+                        changeTopLeftBottomRightRadius(value[0])
+                      }
+                      step={0.1}
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="flex">
+                      <Image
+                        src="/radius-bottom-left.svg"
+                        alt="Bottom left radius"
+                        width={16}
+                        height={16}
+                        className="-mr-1 mt-2"
+                      />
+                      <Image
+                        src="/radius-top-right.svg"
+                        alt="Top right radius"
+                        width={16}
+                        height={16}
+                        className="-ml-1 mb-2"
+                      />
+                    </div>
+                    <Slider
+                      value={[borderRadius.topRight]}
+                      min={0}
+                      max={2}
+                      onValueChange={(value) =>
+                        changeBottomLeftTopRightRadius(value[0])
+                      }
+                      step={0.1}
+                    />
+                  </div>
                 </div>
-                <Slider
-                  value={[borderRadius.topLeft]}
-                  min={0}
-                  max={2}
-                  onValueChange={(value) =>
-                    changeTopLeftBottomRightRadius(value[0])
-                  }
-                  step={0.1}
-                />
-              </div>
-              <div className="flex gap-2">
-                <div className="flex">
-                  <Image
-                    src="/radius-bottom-left.svg"
-                    alt="Bottom left radius"
-                    width={16}
-                    height={16}
-                    className="-mr-1 mt-2"
-                  />
-                  <Image
-                    src="/radius-top-right.svg"
-                    alt="Top right radius"
-                    width={16}
-                    height={16}
-                    className="-ml-1 mb-2"
-                  />
-                </div>
-                <Slider
-                  value={[borderRadius.topRight]}
-                  min={0}
-                  max={2}
-                  onValueChange={(value) =>
-                    changeBottomLeftTopRightRadius(value[0])
-                  }
-                  step={0.1}
-                />
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
       </CardContent>
     </Card>
   );
