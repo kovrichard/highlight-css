@@ -12,6 +12,14 @@ import { Separator } from "./ui/separator";
 import { Input } from "./ui/input";
 import { Slider } from "./ui/slider";
 import Image from "next/image";
+import { Button } from "./ui/button";
+import Reload from "./icons/reload";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 type SettingsProps = {
   style: Style;
@@ -19,14 +27,11 @@ type SettingsProps = {
   color: string;
   setColor: (value: string) => void;
   margin: { [key: string]: number };
+  setMargin: (value: { [key: string]: number }) => void;
   padding: { [key: string]: number };
+  setPadding: (value: { [key: string]: number }) => void;
   borderRadius: { [key: string]: number };
-  changeYMargin: (value: number) => void;
-  changeXMargin: (value: number) => void;
-  changeYPadding: (value: number) => void;
-  changeXPadding: (value: number) => void;
-  changeTopLeftBottomRightRadius: (value: number) => void;
-  changeBottomLeftTopRightRadius: (value: number) => void;
+  setBorderRadius: (value: { [key: string]: number }) => void;
 };
 
 export default function Settings({
@@ -37,28 +42,45 @@ export default function Settings({
   margin,
   padding,
   borderRadius,
-  changeYMargin,
-  changeXMargin,
-  changeYPadding,
-  changeXPadding,
-  changeTopLeftBottomRightRadius,
-  changeBottomLeftTopRightRadius,
+  setMargin,
+  setPadding,
+  setBorderRadius,
 }: SettingsProps) {
-  const onStyleChange = (value: Style) => {
-    setStyle(value);
+  const resetToDefaults = () => {
+    setStyle(Style.Gradient);
+    setColor("#ffe100");
+    setMargin({ top: 0, right: -0.4 });
+    setPadding({ top: 0.1, right: 0.4 });
+    setBorderRadius({ topLeft: 0.8, topRight: 0.3 });
   };
 
   return (
-    <Card className="flex-1 max-w-sm">
-      <CardHeader>
+    <Card className="relative flex-1 max-w-sm">
+      <CardHeader className="relative flex flex-row items-center justify-center">
         <CardTitle className="text-center">Settings</CardTitle>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="z-10 !mt-0 absolute right-4"
+                onClick={resetToDefaults}
+              >
+                <Reload />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Reset to defaults</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </CardHeader>
       <CardContent className="flex flex-col gap-2 sm:gap-4">
         <div className="flex flex-1 items-center w-full gap-4">
           <Label className="w-20">Style</Label>
           <Select
             defaultValue={Style.Gradient}
-            onValueChange={(value) => onStyleChange(value as Style)}
+            value={style}
+            onValueChange={(value) => setStyle(value as Style)}
           >
             <SelectTrigger>
               <SelectValue placeholder="Style"></SelectValue>
@@ -121,7 +143,10 @@ export default function Settings({
                 value={[margin.right]}
                 min={-1.1}
                 max={1}
-                onValueChange={(value) => changeXMargin(value[0])}
+                defaultValue={[margin.right]}
+                onValueChange={(value) =>
+                  setMargin({ ...margin, right: value[0] })
+                }
                 step={0.1}
               />
             </div>
@@ -142,7 +167,9 @@ export default function Settings({
                 value={[padding.top]}
                 min={0}
                 max={1}
-                onValueChange={(value) => changeYPadding(value[0])}
+                onValueChange={(value) =>
+                  setPadding({ ...padding, top: value[0] })
+                }
                 step={0.1}
               />
             </div>
@@ -157,7 +184,9 @@ export default function Settings({
                 value={[padding.right]}
                 min={0}
                 max={1}
-                onValueChange={(value) => changeXPadding(value[0])}
+                onValueChange={(value) =>
+                  setPadding({ ...padding, right: value[0] })
+                }
                 step={0.1}
               />
             </div>
@@ -192,7 +221,11 @@ export default function Settings({
                       min={0}
                       max={2}
                       onValueChange={(value) =>
-                        changeTopLeftBottomRightRadius(value[0])
+                        setBorderRadius({
+                          ...borderRadius,
+                          topLeft: value[0],
+                          bottomRight: value[0],
+                        })
                       }
                       step={0.1}
                     />
@@ -219,7 +252,11 @@ export default function Settings({
                       min={0}
                       max={2}
                       onValueChange={(value) =>
-                        changeBottomLeftTopRightRadius(value[0])
+                        setBorderRadius({
+                          ...borderRadius,
+                          bottomLeft: value[0],
+                          topRight: value[0],
+                        })
                       }
                       step={0.1}
                     />

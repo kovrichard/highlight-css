@@ -49,50 +49,6 @@ export default function Home() {
     });
   };
 
-  const changeXMargin = (value: number) => {
-    setMargin({
-      ...margin,
-      right: value,
-    });
-  };
-
-  const changeYMargin = (value: number) => {
-    setMargin({
-      ...margin,
-      top: value,
-    });
-  };
-
-  const changeXPadding = (value: number) => {
-    setPadding({
-      ...padding,
-      right: value,
-    });
-  };
-
-  const changeYPadding = (value: number) => {
-    setPadding({
-      ...padding,
-      top: value,
-    });
-  };
-
-  const changeTopLeftBottomRightRadius = (value: number) => {
-    setBorderRadius({
-      ...borderRadius,
-      topLeft: value,
-      bottomRight: value,
-    });
-  };
-
-  const changeBottomLeftTopRightRadius = (value: number) => {
-    setBorderRadius({
-      ...borderRadius,
-      bottomLeft: value,
-      topRight: value,
-    });
-  };
-
   const changeStyle = () => {
     if (style === Style.Monochrome) {
       setCss({
@@ -183,14 +139,11 @@ export default function Home() {
             color={color}
             setColor={setColor}
             margin={margin}
+            setMargin={setMargin}
             padding={padding}
+            setPadding={setPadding}
             borderRadius={borderRadius}
-            changeYMargin={changeYMargin}
-            changeXMargin={changeXMargin}
-            changeYPadding={changeYPadding}
-            changeXPadding={changeXPadding}
-            changeTopLeftBottomRightRadius={changeTopLeftBottomRightRadius}
-            changeBottomLeftTopRightRadius={changeBottomLeftTopRightRadius}
+            setBorderRadius={setBorderRadius}
           />
           <CodeBlock
             css={css}
