@@ -11,6 +11,7 @@ import { Style } from "@/models/style";
 import Settings from "@/components/settings";
 import Motto from "@/components/motto";
 import { ToastAction } from "@/components/ui/toast";
+import { filterSvg } from "@/lib/utils";
 
 export default function Home() {
   const { toast } = useToast();
@@ -41,32 +42,7 @@ export default function Home() {
   });
 
   const copyFilterSvg = async () => {
-    const text = `
-        <svg
-        xmlns="//www.w3.org/2000/svg"
-        version="1.1"
-        class="svg-filters"
-        style="display: none;"
-    >
-        <defs>
-        <filter id="marker-shape">
-            <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0 0.15"
-            numOctaves="1"
-            result="warp"
-            />
-            <feDisplacementMap
-            xChannelSelector="R"
-            yChannelSelector="G"
-            scale="30"
-            in="SourceGraphic"
-            in2="warp"
-            />
-        </filter>
-        </defs>
-    </svg>`;
-    await navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(filterSvg);
     toast({
       title: "Note",
       description: "Filter SVG copied to clipboard",
