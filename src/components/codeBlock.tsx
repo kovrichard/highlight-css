@@ -35,6 +35,7 @@ export default function CodeBlock({
     toast({
       title: "Note",
       description: "CSS copied to clipboard",
+      duration: 2000,
     });
   };
 
@@ -43,6 +44,7 @@ export default function CodeBlock({
     toast({
       title: "Note",
       description: "Filter SVG copied to clipboard",
+      duration: 2000,
     });
   };
 

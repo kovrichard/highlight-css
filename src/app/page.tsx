@@ -46,6 +46,7 @@ export default function Home() {
     toast({
       title: "Note",
       description: "Filter SVG copied to clipboard",
+      duration: 2000,
     });
   };
 
@@ -93,6 +94,7 @@ export default function Home() {
         title: "Note",
         description:
           "You also need a filter for this style. Put it somewhere in your HTML.",
+        duration: 5000,
         action: (
           <ToastAction
             onClick={copyFilterSvg}
