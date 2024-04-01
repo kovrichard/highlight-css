@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   title: "Free Online Text Highlighter CSS Generator",
   description:
     "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   alternates: {
     canonical: "https://www.highlightcss.com",
   },
