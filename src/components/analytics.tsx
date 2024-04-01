@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import conf from "../lib/config";
 
 export default function Analytics() {
@@ -19,6 +20,7 @@ export default function Analytics() {
             gtag('config', '${conf.googleAnalyticsId}');
           `}
       </Script>
+      <GoogleTagManager gtmId={conf.googleTagManagerId} />
     </>
   );
 }
