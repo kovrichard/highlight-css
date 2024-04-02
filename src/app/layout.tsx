@@ -10,10 +10,13 @@ import Analytics from "@/components/analytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const titleText = "Free Online Text Highlighter CSS Generator";
+const descriptionText =
+  "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.";
+
 export const metadata: Metadata = {
-  title: "Free Online Text Highlighter CSS Generator",
-  description:
-    "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
+  title: titleText,
+  description: descriptionText,
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
@@ -24,15 +27,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@rchardkovacs",
-    description:
-      "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
-    title: "Free Online Text Highlighter CSS Generator",
+    description: descriptionText,
+    title: titleText,
     images: [
       {
         url: "https://www.highlightcss.com/cover.png",
         width: 1200,
         height: 630,
-        alt: "Free Online Text Highlighter CSS Generator",
+        alt: titleText,
       },
     ],
   },
@@ -53,16 +55,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.highlightcss.com",
-    title: "Free Online Text Highlighter CSS Generator",
-    description:
-      "Save time highlighting text on webpages. Generate custom CSS code to highlight text and easily copy it to your clipboard.",
-    siteName: "Free Online Text Highlighter CSS Generator",
+    title: titleText,
+    description: descriptionText,
+    siteName: "Highlight CSS",
     images: [
       {
         url: "https://www.highlightcss.com/cover.png",
         width: 1200,
         height: 630,
-        alt: "Free Online Text Highlighter CSS Generator",
+        alt: titleText,
       },
     ],
   },
