@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const slantingCss = {
-  content: '""',
+  content: "''",
   position: "absolute",
   width: "calc(100% + 0.5rem)",
   height: "60%",
@@ -17,7 +17,7 @@ export const slantingCss = {
 };
 
 export const realisticCss = {
-  content: '""',
+  content: "''",
   position: "absolute",
   width: "100%",
   height: "105%",
