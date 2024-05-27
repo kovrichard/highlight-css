@@ -85,7 +85,8 @@ export default function TailwindBlock({
           <ScrollArea className="h-96 rounded-xl bg-black">
             <pre ref={textAreaRef} className="relative p-8">
               <code className="flex flex-col text-pretty text-white">
-                <div>
+                <div className="text-[#e6db74]">
+                  <span className="text-[#a6e22e]">class</span><span className="text-[#f92672]">=</span><span>&quot;</span>
                   {(style === Style.Slanting || style === Style.Realistic) && (
                     <>
                       <span>relative</span>{" "}
@@ -162,6 +163,7 @@ export default function TailwindBlock({
                       }
                     })}
                   <span>after:bg-[{color}]</span>
+                  <span>&quot;</span>
                 </div>
               </code>
             </pre>
