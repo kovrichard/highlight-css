@@ -3,19 +3,19 @@
 import { useEffect, useState } from "react";
 import { H1 } from "@/components/ui/typography/h1";
 import { H2 } from "@/components/ui/typography/h2";
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import CodeBlock from "@/components/codeBlock";
 import { Style } from "@/models/style";
 import Settings from "@/components/settings";
 import Motto from "@/components/motto";
 import { ToastAction } from "@/components/ui/toast";
 import { filterSvg } from "@/lib/utils";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import TailwindBlock from "@/components/tailwind-block";
 
 export default function Home() {
   const { toast } = useToast();
-  const [text, setText] = useState("Seconds");
+  const [tab, setTab] = useState("css");
   const [style, setStyle] = useState<Style>(Style.Gradient);
   const [color, setColor] = useState<string>("#ffe100");
   const [margin, setMargin] = useState<{ [key: string]: number }>({
@@ -82,6 +82,7 @@ export default function Home() {
         "box-decoration-break": "clone",
       });
     } else if (style === Style.Realistic) {
+      setTab("css");
       setCss({
         margin: `${margin.top}em ${margin.right}em`,
         padding: `${padding.top}em ${padding.right}em`,
@@ -127,12 +128,30 @@ export default function Home() {
             className="w-64 p-2"
             style={{ color: "black" }}
           />*/}
-          <CodeBlock
-            css={css}
-            style={style}
-            color={color}
-            className="hidden lg:block"
-          />
+          <Tabs defaultValue="css" value={tab} onValueChange={setTab}>
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="css">Raw CSS</TabsTrigger>
+              <TabsTrigger value="tailwind" disabled={style === Style.Realistic}>
+                Tailwind
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="css">
+              <CodeBlock
+                css={css}
+                style={style}
+                color={color}
+                className="hidden lg:block"
+              />
+            </TabsContent>
+            <TabsContent value="tailwind">
+              <TailwindBlock
+                css={css}
+                style={style}
+                color={color}
+                className="hidden lg:block"
+              />
+            </TabsContent>
+          </Tabs>
         </div>
         <div className="flex flex-wrap lg:flex-1 items-center justify-center gap-8 sm:flex-row-reverse max-w-[30rem] lg:mt-16">
           <Settings

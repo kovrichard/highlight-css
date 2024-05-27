@@ -2,5 +2,5 @@ export enum Style {
   Monochrome = "Monochrome",
   Gradient = "Gradient",
   Slanting = "Slanting",
-  Realistic = "Realistic",
+  Realistic = "Realistic (CSS only)",
 }
