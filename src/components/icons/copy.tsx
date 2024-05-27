@@ -6,11 +6,11 @@ export default function Copy() {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       stroke="currentColor"
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       style={{ pointerEvents: "none" }}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
