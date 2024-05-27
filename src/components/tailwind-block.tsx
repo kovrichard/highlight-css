@@ -95,15 +95,15 @@ export default function TailwindBlock({
                     if (key === "margin") {
                       return (
                         <>
-                          <span>mx-[{value.split(" ")[0]}] </span>
-                          <span>my-[{value.split(" ")[1]}] </span>
+                          <span>my-[{value.split(" ")[0]}] </span>
+                          <span>mx-[{value.split(" ")[1]}] </span>
                         </>
                       );
                     } else if (key === "padding") {
                       return (
                         <>
-                          <span>px-[{value.split(" ")[0]}] </span>
-                          <span>py-[{value.split(" ")[1]}] </span>
+                          <span>py-[{value.split(" ")[0]}] </span>
+                          <span>px-[{value.split(" ")[1]}] </span>
                         </>
                       );
                     } else if (key === "border-radius") {

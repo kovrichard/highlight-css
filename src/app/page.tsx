@@ -36,7 +36,7 @@ export default function Home() {
     "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
     background: "transparent",
     color: "currentColor",
-    "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+    "background-image": `linear-gradient(to right, ${color}1a, ${color}ae)`,
     "-webkit-box-decoration-break": "clone",
     "box-decoration-break": "clone",
   });
@@ -68,7 +68,7 @@ export default function Home() {
         "border-radius": `${borderRadius.topLeft}em ${borderRadius.topRight}em`,
         background: "transparent",
         color: "currentColor",
-        "background-image": `linear-gradient(to right, ${color}1a, ${color}ae 4%, ${color}4d)`,
+        "background-image": `linear-gradient(to right, ${color}1a, ${color}ae)`,
         "-webkit-box-decoration-break": "clone",
         "box-decoration-break": "clone",
       });
