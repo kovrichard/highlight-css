@@ -131,7 +131,10 @@ export default function Home() {
           <Tabs defaultValue="css" value={tab} onValueChange={setTab}>
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="css">Raw CSS</TabsTrigger>
-              <TabsTrigger value="tailwind" disabled={style === Style.Realistic}>
+              <TabsTrigger
+                value="tailwind"
+                disabled={style === Style.Realistic}
+              >
                 Tailwind
               </TabsTrigger>
             </TabsList>
@@ -166,12 +169,13 @@ export default function Home() {
             borderRadius={borderRadius}
             setBorderRadius={setBorderRadius}
           />
-          <CodeBlock
-            css={css}
-            style={style}
-            color={color}
-            className="lg:hidden"
-          />
+          <div className="lg:hidden">
+            {tab === "css" ? (
+              <CodeBlock css={css} style={style} color={color} />
+            ) : (
+              <TailwindBlock css={css} style={style} color={color} />
+            )}
+          </div>
         </div>
       </div>
     </main>
