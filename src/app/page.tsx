@@ -113,7 +113,7 @@ export default function Home() {
   }, [style, color, margin, padding, borderRadius]);
 
   return (
-    <main className="flex max-w-7xl flex-col items-center py-24 px-6 md:px-12 gap-12 m-auto">
+    <main className="flex max-w-7xl flex-col items-center py-20 px-6 md:px-12 gap-12 m-auto">
       <div className="flex flex-col text-center gap-4">
         <H1>Text Highlighter</H1>
         <H2>Generate highlighter effect CSS code</H2>
